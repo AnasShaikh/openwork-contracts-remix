@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.28+commit.7893614a"
+		"version": "0.8.30+commit.73712a01"
 	},
 	"language": "Solidity",
 	"output": {
@@ -135,8 +135,8 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": true,
-			"runs": 300
+			"enabled": false,
+			"runs": 200
 		},
 		"remappings": []
 	},
@@ -310,11 +310,11 @@
 			]
 		},
 		"rewards-tracking-contract.sol": {
-			"keccak256": "0x5353e94c349c352697cd03f94863b80deaf06fbfd78be5ba78cce3cb40c80314",
+			"keccak256": "0x7846b431c5b5fcf215ce4a353415d4ab7957093b4d145e230a042c2f6d7afc62",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://8d03f8f0236ea853b17453156aba0067bee2d4f75ecdb81812e889315c476a16",
-				"dweb:/ipfs/QmaPkGfZJJdXMNxdeUbUNWNQgtYVAGARdqPyBRV27QSFw4"
+				"bzz-raw://706060b88f3165958f8cea788f2baacb0fe3fffc03dba9625a67dfc76ae210d4",
+				"dweb:/ipfs/QmS8dLK3o2814R5189fEB7WtjWSzUz1Mcykk5ubH5CkTdF"
 			]
 		}
 	},
