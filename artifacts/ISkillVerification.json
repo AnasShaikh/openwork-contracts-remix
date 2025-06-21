@@ -1,0 +1,365 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"applyForSkillVerification(string,string,string)": "896ed341",
+			"getSkillApplicationDetails(uint256)": "eca87449",
+			"getSkillVerificationStatus(address,string)": "203f283c",
+			"isSkillVerified(address,string)": "8d9a854b",
+			"requestSkillVerification(string,string,string)": "3ad7dd92",
+			"verifySkill(address,string)": "5cad3d5f",
+			"voteOnSkillApplication(uint256,bool,string)": "81342ff0",
+			"voteOnSkillVerification(address,string,bool,string)": "cc82be51"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "evidenceHash",
+					"type": "string"
+				}
+			],
+			"name": "applyForSkillVerification",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "applicationId",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "applicationId",
+					"type": "uint256"
+				}
+			],
+			"name": "getSkillApplicationDetails",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "id",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "applicant",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "skillName",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "evidence",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "oracleName",
+							"type": "string"
+						},
+						{
+							"internalType": "enum SkillStorage.SkillStatus",
+							"name": "status",
+							"type": "uint8"
+						},
+						{
+							"internalType": "uint256",
+							"name": "createdAt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "verifiedAt",
+							"type": "uint256"
+						}
+					],
+					"internalType": "struct SkillStorage.SkillApplication",
+					"name": "",
+					"type": "tuple"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "applicant",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				}
+			],
+			"name": "getSkillVerificationStatus",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "id",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "applicant",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "skillName",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "evidence",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "oracleName",
+							"type": "string"
+						},
+						{
+							"internalType": "enum SkillStorage.SkillStatus",
+							"name": "status",
+							"type": "uint8"
+						},
+						{
+							"internalType": "uint256",
+							"name": "createdAt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "verifiedAt",
+							"type": "uint256"
+						}
+					],
+					"internalType": "struct SkillStorage.SkillApplication",
+					"name": "application",
+					"type": "tuple"
+				},
+				{
+					"internalType": "bool",
+					"name": "verified",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "applicant",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				}
+			],
+			"name": "isSkillVerified",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "evidenceHash",
+					"type": "string"
+				}
+			],
+			"name": "requestSkillVerification",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "applicant",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				}
+			],
+			"name": "verifySkill",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "applicationId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bool",
+					"name": "inFavor",
+					"type": "bool"
+				},
+				{
+					"internalType": "string",
+					"name": "reasonHash",
+					"type": "string"
+				}
+			],
+			"name": "voteOnSkillApplication",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "applicant",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				},
+				{
+					"internalType": "bool",
+					"name": "inFavor",
+					"type": "bool"
+				},
+				{
+					"internalType": "string",
+					"name": "reasonHash",
+					"type": "string"
+				}
+			],
+			"name": "voteOnSkillVerification",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

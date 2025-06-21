@@ -1,0 +1,93 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_stringSender",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "_dstEid",
+						"type": "uint32"
+					},
+					{
+						"internalType": "string",
+						"name": "_message",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_options",
+						"type": "bytes"
+					}
+				],
+				"name": "callSendString",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "stringSender",
+				"outputs": [
+					{
+						"internalType": "contract IStringSender",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"string-sender-wrapper.sol": "StringSenderCaller"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 300
+		},
+		"remappings": []
+	},
+	"sources": {
+		"string-sender-wrapper.sol": {
+			"keccak256": "0xd937d40500c0f375e8c71c47347ee4e2acf03562fb6ae2db3742753f14c6aa00",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d15313bc23cd5c0cf6a33a4e606f35aa50949faf9030523abfb6e7d95b98fa14",
+				"dweb:/ipfs/QmVpGDUVdox1C8MivWYPrE2AQEa7rnUa9FFqoZjH4kqVHH"
+			]
+		}
+	},
+	"version": 1
+}

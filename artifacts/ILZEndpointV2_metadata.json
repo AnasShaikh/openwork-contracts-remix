@@ -1,0 +1,133 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "dstChainSelector",
+						"type": "uint32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "to",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes",
+						"name": "payload",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "options",
+						"type": "bytes"
+					}
+				],
+				"name": "quote",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint128",
+								"name": "nativeFee",
+								"type": "uint128"
+							},
+							{
+								"internalType": "uint128",
+								"name": "lzTokenFee",
+								"type": "uint128"
+							}
+						],
+						"internalType": "struct MessagingFee",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "dstChainSelector",
+						"type": "uint32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "to",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes",
+						"name": "payload",
+						"type": "bytes"
+					},
+					{
+						"internalType": "bytes",
+						"name": "options",
+						"type": "bytes"
+					},
+					{
+						"internalType": "address",
+						"name": "refundAddress",
+						"type": "address"
+					}
+				],
+				"name": "send",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"title": "OpenWork LayerZero V2 sample – sender + receiver in one file",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"notice": "Deploy one instance on every chain, pair them with `setRemote`, then use `sendString` for cross‑chain messages. This revision adds a public `quoteSend` helper so you can fetch the precise native fee (msg.value) in Remix or scripts.",
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"LocalOpenworkSender.sol": "ILZEndpointV2"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"LocalOpenworkSender.sol": {
+			"keccak256": "0x96e9506b6d8140e8026ec17540a4f83b44242e237c1116d20cd6082c89029871",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ecd75f59c2f8e2eb1dcd308218e3c61796c72aed9da720bb3367d2339e9460ca",
+				"dweb:/ipfs/QmetKpXNSwxHC5xEJAkcxdas4mTmdo5bCLhecpPyjNynT2"
+			]
+		}
+	},
+	"version": 1
+}

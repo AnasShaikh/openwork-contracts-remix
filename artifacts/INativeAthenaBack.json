@@ -1,0 +1,987 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"calculateDisputeRefund(uint256,address)": "8fb40fb6",
+			"calculateDisputeReward(uint256,address)": "99d71b55",
+			"calculateQuestionRefund(uint256,address)": "eec6ab0f",
+			"calculateQuestionReward(uint256,address)": "348eb0ec",
+			"calculateSkillRefund(uint256,address)": "b958835b",
+			"calculateSkillReward(uint256,address)": "70a69408",
+			"getDisputeDetails(uint256)": "ea89735d",
+			"getDisputeFee()": "bbf3e10b",
+			"getQuestionDetails(uint256)": "9f8c45cf",
+			"getQuestionFee()": "8c0c19d4",
+			"getSkillApplicationDetails(uint256)": "eca87449",
+			"getSkillApplicationId(address,string)": "ad78b7ae",
+			"getSkillVerificationFee()": "666347d8",
+			"isSkillVerified(address,string)": "8d9a854b",
+			"processCrossChainMessage(bytes)": "d0d84a3a",
+			"processDispute(uint256,string,string,address,address,uint256)": "5159d204",
+			"processDisputeEscalation(uint256,address)": "865795c3",
+			"processDisputeResolution(uint256,address,address)": "865e5234",
+			"processDisputeVote(uint256,bool,string,address)": "ec0886f4",
+			"processEvidenceSubmission(uint256,string,address)": "5007d37d",
+			"processQuestion(string,string,address)": "51f6a9e8",
+			"processQuestionVote(uint256,bool,string,address)": "462e45fa",
+			"processSkillApplication(string,string,string,address)": "dbb9d735",
+			"processSkillVote(uint256,bool,string,address)": "a53e8241",
+			"validateCrossChainDispute(address,uint256,string,string,uint256)": "882578f0",
+			"validateCrossChainDisputeClaim(address,uint256)": "30f590d0",
+			"validateCrossChainQuestion(address,string,string,string,uint256)": "97ad50f9",
+			"validateCrossChainSkillVerification(address,string,string,uint256)": "04075a7f"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "initiator",
+					"type": "address"
+				}
+			],
+			"name": "calculateDisputeRefund",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "voter",
+					"type": "address"
+				}
+			],
+			"name": "calculateDisputeReward",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "asker",
+					"type": "address"
+				}
+			],
+			"name": "calculateQuestionRefund",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "voter",
+					"type": "address"
+				}
+			],
+			"name": "calculateQuestionReward",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "applicationId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "applicant",
+					"type": "address"
+				}
+			],
+			"name": "calculateSkillRefund",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "applicationId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "voter",
+					"type": "address"
+				}
+			],
+			"name": "calculateSkillReward",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				}
+			],
+			"name": "getDisputeDetails",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "id",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "jobId",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "initiator",
+							"type": "address"
+						},
+						{
+							"internalType": "address",
+							"name": "respondent",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "reason",
+							"type": "string"
+						},
+						{
+							"internalType": "enum DisputeStorage.DisputeStatus",
+							"name": "status",
+							"type": "uint8"
+						},
+						{
+							"internalType": "bool",
+							"name": "resultDetermined",
+							"type": "bool"
+						},
+						{
+							"internalType": "bool",
+							"name": "fundsReleased",
+							"type": "bool"
+						},
+						{
+							"internalType": "address",
+							"name": "recipient",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "lockedAmount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "createdAt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "resolvedAt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "string",
+							"name": "evidence",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "assignedOracle",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "requiredVotes",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bool",
+							"name": "oracleValidated",
+							"type": "bool"
+						}
+					],
+					"internalType": "struct DisputeStorage.Dispute",
+					"name": "dispute",
+					"type": "tuple"
+				},
+				{
+					"internalType": "uint256",
+					"name": "votesFor",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "votesAgainst",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "getDisputeFee",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				}
+			],
+			"name": "getQuestionDetails",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "id",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "asker",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "questionHash",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "oracleName",
+							"type": "string"
+						},
+						{
+							"internalType": "enum QuestionStorage.QuestionStatus",
+							"name": "status",
+							"type": "uint8"
+						},
+						{
+							"internalType": "uint256",
+							"name": "createdAt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "answeredAt",
+							"type": "uint256"
+						}
+					],
+					"internalType": "struct QuestionStorage.Question",
+					"name": "question",
+					"type": "tuple"
+				},
+				{
+					"internalType": "uint256",
+					"name": "votesFor",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "votesAgainst",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "getQuestionFee",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "applicationId",
+					"type": "uint256"
+				}
+			],
+			"name": "getSkillApplicationDetails",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "id",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "applicant",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "skillName",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "evidence",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "oracleName",
+							"type": "string"
+						},
+						{
+							"internalType": "enum SkillStorage.SkillStatus",
+							"name": "status",
+							"type": "uint8"
+						},
+						{
+							"internalType": "uint256",
+							"name": "createdAt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "verifiedAt",
+							"type": "uint256"
+						}
+					],
+					"internalType": "struct SkillStorage.SkillApplication",
+					"name": "",
+					"type": "tuple"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "applicant",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				}
+			],
+			"name": "getSkillApplicationId",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [],
+			"name": "getSkillVerificationFee",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "applicant",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				}
+			],
+			"name": "isSkillVerified",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "bytes",
+					"name": "payload",
+					"type": "bytes"
+				}
+			],
+			"name": "processCrossChainMessage",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "jobId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "disputeHash",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "initiator",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "respondent",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "lockedAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "processDispute",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "escalator",
+					"type": "address"
+				}
+			],
+			"name": "processDisputeEscalation",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "recipient",
+					"type": "address"
+				},
+				{
+					"internalType": "address",
+					"name": "resolver",
+					"type": "address"
+				}
+			],
+			"name": "processDisputeResolution",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bool",
+					"name": "inFavor",
+					"type": "bool"
+				},
+				{
+					"internalType": "string",
+					"name": "reasonHash",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "voter",
+					"type": "address"
+				}
+			],
+			"name": "processDisputeVote",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "evidenceHash",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "submitter",
+					"type": "address"
+				}
+			],
+			"name": "processEvidenceSubmission",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "questionHash",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "asker",
+					"type": "address"
+				}
+			],
+			"name": "processQuestion",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bool",
+					"name": "inFavor",
+					"type": "bool"
+				},
+				{
+					"internalType": "string",
+					"name": "reasonHash",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "voter",
+					"type": "address"
+				}
+			],
+			"name": "processQuestionVote",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "evidenceHash",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "applicant",
+					"type": "address"
+				}
+			],
+			"name": "processSkillApplication",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "applicationId",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "applicationId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bool",
+					"name": "inFavor",
+					"type": "bool"
+				},
+				{
+					"internalType": "string",
+					"name": "reasonHash",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "voter",
+					"type": "address"
+				}
+			],
+			"name": "processSkillVote",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "user",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "jobId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "disputeHash",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "usdtFee",
+					"type": "uint256"
+				}
+			],
+			"name": "validateCrossChainDispute",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "user",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				}
+			],
+			"name": "validateCrossChainDisputeClaim",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "user",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "question",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "contextHash",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "usdtFee",
+					"type": "uint256"
+				}
+			],
+			"name": "validateCrossChainQuestion",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "user",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "skill",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "proofHash",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "usdtFee",
+					"type": "uint256"
+				}
+			],
+			"name": "validateCrossChainSkillVerification",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "applicationId",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

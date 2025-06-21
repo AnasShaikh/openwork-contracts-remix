@@ -1,0 +1,2129 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "target",
+						"type": "address"
+					}
+				],
+				"name": "AddressEmptyCode",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "implementation",
+						"type": "address"
+					}
+				],
+				"name": "ERC1967InvalidImplementation",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "ERC1967NonPayable",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "FailedCall",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidInitialization",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotInitializing",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "UUPSUnauthorizedCallContext",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "slot",
+						"type": "bytes32"
+					}
+				],
+				"name": "UUPSUnsupportedProxiableUUID",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "initiator",
+						"type": "address"
+					}
+				],
+				"name": "DisputeCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "disputeId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "DisputedFundsReleased",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "earningsContract",
+						"type": "address"
+					}
+				],
+				"name": "EarningsContractSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "EarningsRecorded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "disputeId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FundsLocked",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "version",
+						"type": "uint64"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "freelancer",
+						"type": "address"
+					}
+				],
+				"name": "JobApplicationSubmitted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "freelancer",
+						"type": "address"
+					}
+				],
+				"name": "JobAssigned",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "JobCancelled",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "JobCompleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "jobGiver",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "jobDetailHash",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "budget",
+						"type": "uint256"
+					}
+				],
+				"name": "JobCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "JobFunded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					}
+				],
+				"name": "JobMilestonesUpdated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "milestoneId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "MilestoneCompleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "milestoneId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "MilestoneCreated",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "milestoneIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "MilestoneLocked",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "milestoneId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "MilestonePaid",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "milestoneIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "NextMilestoneReady",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "implementation",
+						"type": "address"
+					}
+				],
+				"name": "Upgraded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "userRegistryContract",
+						"type": "address"
+					}
+				],
+				"name": "UserRegistryContractSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "submissionId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "WorkApproved",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "submissionId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "feedback",
+						"type": "string"
+					}
+				],
+				"name": "WorkRejected",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "submissionId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "freelancer",
+						"type": "address"
+					}
+				],
+				"name": "WorkSubmitted",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "UPGRADE_INTERFACE_VERSION",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "proposal",
+						"type": "string"
+					}
+				],
+				"name": "applyForJob",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "application_hash",
+						"type": "string"
+					}
+				],
+				"name": "applyToJob",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "application_hash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "proposedMilestones",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "string",
+						"name": "milestoneDetailsHash",
+						"type": "string"
+					}
+				],
+				"name": "applyToJobWithProposal",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "submissionId",
+						"type": "uint256"
+					}
+				],
+				"name": "approveWork",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "freelancer",
+						"type": "address"
+					}
+				],
+				"name": "assignJob",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "cancelJob",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "completeJob",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "milestoneIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "completeMilestone_UnlockNext",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					}
+				],
+				"name": "createDispute",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "fundJob",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "applicantIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getApplicant",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "getApplicantCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "count",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "applicantIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getApplication",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "proposalHash",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "getJobDetails",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "jobGiver",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "jobDetailHash",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isOpen",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isCompleted",
+						"type": "bool"
+					},
+					{
+						"internalType": "address",
+						"name": "selectedApplicant",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentMilestone",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalMilestones",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalPaid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "applicantCount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "getJobPosting",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "client",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "title",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "description",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "budget",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "createdAt",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "freelancer",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "status",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "completedAt",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "milestoneIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "getMilestone",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "completed",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "paid",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "getMilestoneCount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "count",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					}
+				],
+				"name": "getProposedMilestones",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "hasMilestoneProposal",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "milestonePayments",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "string",
+						"name": "milestoneDetailsHash",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "getTotalMilestoneAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "totalAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					}
+				],
+				"name": "hasProposedMilestones",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "hasProposal",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "userRegistryAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "earningsContractAddress",
+						"type": "address"
+					}
+				],
+				"name": "initializeWithContracts",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "isUserRegistryConfigured",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "jobExists",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "exists",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "disputeId",
+						"type": "uint256"
+					}
+				],
+				"name": "lockDisputedFunds",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "lockedAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "milestoneAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "lockNextMilestoneInterchain",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "ipfsHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "milestones",
+						"type": "uint256[]"
+					}
+				],
+				"name": "postJob",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proxiableUUID",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "submissionId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "feedback",
+						"type": "string"
+					}
+				],
+				"name": "rejectWork",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "disputeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "winner",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "platformFee",
+						"type": "uint256"
+					}
+				],
+				"name": "releaseDisputedFunds",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "success",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "milestoneIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amountReleased",
+						"type": "uint256"
+					}
+				],
+				"name": "releasePaymentInterchain",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint8",
+						"name": "",
+						"type": "uint8"
+					}
+				],
+				"name": "resolveDispute",
+				"outputs": [],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "freelancer",
+						"type": "address"
+					}
+				],
+				"name": "selectApplicant",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "earningsContractAddress",
+						"type": "address"
+					}
+				],
+				"name": "setEarningsContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "userRegistryAddress",
+						"type": "address"
+					}
+				],
+				"name": "setUserRegistryContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "acceptProposedMilestones",
+						"type": "bool"
+					}
+				],
+				"name": "startJobInterChain",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					},
+					{
+						"internalType": "bool",
+						"name": "acceptProposedMilestones",
+						"type": "bool"
+					}
+				],
+				"name": "startJobWithProposedMilestones",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					}
+				],
+				"name": "startJob_LockMilestone1",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "startNextMilestone",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "workHash",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "comments",
+						"type": "string"
+					}
+				],
+				"name": "submitWork",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newImplementation",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "upgradeToAndCall",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Contract for managing the job marketplace in the OpenWork platform",
+			"errors": {
+				"AddressEmptyCode(address)": [
+					{
+						"details": "There's no code at `target` (it is not a contract)."
+					}
+				],
+				"ERC1967InvalidImplementation(address)": [
+					{
+						"details": "The `implementation` of the proxy is invalid."
+					}
+				],
+				"ERC1967NonPayable()": [
+					{
+						"details": "An upgrade function sees `msg.value > 0` that may be lost."
+					}
+				],
+				"FailedCall()": [
+					{
+						"details": "A call to an address target failed. The target may have reverted."
+					}
+				],
+				"InvalidInitialization()": [
+					{
+						"details": "The contract is already initialized."
+					}
+				],
+				"NotInitializing()": [
+					{
+						"details": "The contract is not initializing."
+					}
+				],
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				],
+				"UUPSUnauthorizedCallContext()": [
+					{
+						"details": "The call is from an unauthorized context."
+					}
+				],
+				"UUPSUnsupportedProxiableUUID(bytes32)": [
+					{
+						"details": "The storage `slot` is unsupported as a UUID."
+					}
+				]
+			},
+			"events": {
+				"Initialized(uint64)": {
+					"details": "Triggered when the contract has been initialized or reinitialized."
+				},
+				"Upgraded(address)": {
+					"details": "Emitted when the implementation is upgraded."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"applyForJob(uint256,string)": {
+					"details": "Apply for a job (legacy function)",
+					"params": {
+						"jobId": "The ID of the job",
+						"proposal": "The proposal text"
+					}
+				},
+				"applyToJob(uint256,string)": {
+					"details": "Apply for a job - original function",
+					"params": {
+						"application_hash": "IPFS hash containing the application details",
+						"jobId": "The ID of the job"
+					}
+				},
+				"applyToJobWithProposal(uint256,string,uint256[],string)": {
+					"details": "Apply for a job with optional proposed milestones",
+					"params": {
+						"application_hash": "IPFS hash containing the application details",
+						"jobId": "The ID of the job",
+						"milestoneDetailsHash": "IPFS hash containing milestone descriptions (optional)",
+						"proposedMilestones": "Array of proposed milestone payment amounts (optional)"
+					}
+				},
+				"approveWork(uint256)": {
+					"details": "Approve submitted work",
+					"params": {
+						"submissionId": "ID of the submission"
+					}
+				},
+				"assignJob(uint256,address)": {
+					"details": "Legacy function for assigning a job to a freelancer - kept for backward compatibility",
+					"params": {
+						"freelancer": "The address of the selected freelancer",
+						"jobId": "The ID of the job"
+					}
+				},
+				"cancelJob(uint256)": {
+					"details": "Cancel a job",
+					"params": {
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"_0": "success True if the job was cancelled"
+					}
+				},
+				"completeJob(uint256)": {
+					"details": "Complete a job",
+					"params": {
+						"jobId": "ID of the job"
+					}
+				},
+				"completeMilestone_UnlockNext(uint256,uint256)": {
+					"details": "Complete a milestone and unlock the next one",
+					"params": {
+						"jobId": "ID of the job",
+						"milestoneIndex": "Index of the milestone to complete"
+					}
+				},
+				"createDispute(uint256,string)": {
+					"details": "Create a dispute for a job",
+					"params": {
+						"jobId": "ID of the job",
+						"reason": "Reason for the dispute"
+					}
+				},
+				"fundJob(uint256)": {
+					"details": "Fund a job",
+					"params": {
+						"jobId": "ID of the job"
+					}
+				},
+				"getApplicant(uint256,uint256)": {
+					"details": "Get an applicant address for a job",
+					"params": {
+						"applicantIndex": "Index of the applicant",
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"applicant": "Address of the applicant"
+					}
+				},
+				"getApplicantCount(uint256)": {
+					"details": "Get the number of applicants for a job",
+					"params": {
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"count": "Number of applicants"
+					}
+				},
+				"getApplication(uint256,uint256)": {
+					"details": "Get application details for a job",
+					"params": {
+						"applicantIndex": "Index of the applicant",
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"applicant": "Address of the applicant",
+						"proposalHash": "IPFS hash containing the proposal"
+					}
+				},
+				"getJobDetails(uint256)": {
+					"details": "Get detailed job information",
+					"params": {
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"applicantCount": "Number of applicants",
+						"currentMilestone": "Current milestone index",
+						"id": "Job ID",
+						"isCompleted": "Whether the job is completed",
+						"isOpen": "Whether the job is open for applications",
+						"jobDetailHash": "IPFS hash containing job details",
+						"jobGiver": "Job giver address",
+						"selectedApplicant": "The address of the selected freelancer",
+						"totalMilestones": "Total number of milestones",
+						"totalPaid": "Total amount paid so far"
+					}
+				},
+				"getJobPosting(uint256)": {
+					"details": "Get job posting details",
+					"params": {
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"budget": "Total budget",
+						"client": "Client address",
+						"completedAt": "Completion timestamp (0 if not completed)",
+						"createdAt": "Creation timestamp",
+						"deadline": "Job deadline (0 for new format)",
+						"description": "Job description (empty for new format)",
+						"freelancer": "Selected freelancer address",
+						"id": "Job ID",
+						"status": "Job status (0: open, 1: in progress, 2: completed, 3: cancelled)",
+						"title": "Job title (empty for new format)"
+					}
+				},
+				"getMilestone(uint256,uint256)": {
+					"details": "Get milestone details",
+					"params": {
+						"jobId": "ID of the job",
+						"milestoneIndex": "Index of the milestone"
+					},
+					"returns": {
+						"amount": "Payment amount for the milestone",
+						"completed": "Whether the milestone is completed",
+						"paid": "Whether the milestone payment has been paid"
+					}
+				},
+				"getMilestoneCount(uint256)": {
+					"details": "Get the number of milestones for a job",
+					"params": {
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"count": "Number of milestones"
+					}
+				},
+				"getProposedMilestones(uint256,address)": {
+					"details": "Get proposed milestones from an applicant",
+					"params": {
+						"applicant": "Address of the applicant",
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"hasMilestoneProposal": "Whether the applicant has proposed milestones",
+						"milestoneDetailsHash": "IPFS hash containing milestone descriptions",
+						"milestonePayments": "Array of proposed milestone payment amounts"
+					}
+				},
+				"getTotalMilestoneAmount(uint256)": {
+					"details": "Get the total milestone amount for a job",
+					"params": {
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"totalAmount": "Total amount across all milestones"
+					}
+				},
+				"hasProposedMilestones(uint256,address)": {
+					"details": "Check if an applicant has proposed milestones",
+					"params": {
+						"applicant": "Address of the applicant",
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"hasProposal": "True if the applicant has proposed milestones"
+					}
+				},
+				"initialize()": {
+					"details": "Initialize the contract"
+				},
+				"initializeWithContracts(address,address)": {
+					"details": "Initialize the contract with external contracts",
+					"params": {
+						"earningsContractAddress": "The address of the earnings contract",
+						"userRegistryAddress": "The address of the user registry contract"
+					}
+				},
+				"isUserRegistryConfigured()": {
+					"details": "Check if the user registry is configured",
+					"returns": {
+						"_0": "bool True if the user registry is set"
+					}
+				},
+				"jobExists(uint256)": {
+					"details": "Check if a job exists - External interface",
+					"params": {
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"exists": "True if the job exists"
+					}
+				},
+				"lockDisputedFunds(uint256,uint256)": {
+					"details": "Lock funds for a disputed job",
+					"params": {
+						"disputeId": "ID of the dispute",
+						"jobId": "ID of the job"
+					},
+					"returns": {
+						"lockedAmount": "Amount of funds locked"
+					}
+				},
+				"lockNextMilestoneInterchain(uint256,uint256)": {
+					"details": "Lock next milestone payment for interchain job",
+					"params": {
+						"jobId": "ID of the job",
+						"milestoneAmount": "The amount locked on the local chain"
+					}
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"postJob(string,uint256[])": {
+					"details": "Create a new job posting",
+					"params": {
+						"ipfsHash": "IPFS hash containing job details",
+						"milestones": "Array of milestone payment amounts"
+					},
+					"returns": {
+						"_0": "jobId The ID of the created job"
+					}
+				},
+				"proxiableUUID()": {
+					"details": "Implementation of the ERC-1822 {proxiableUUID} function. This returns the storage slot used by the implementation. It is used to validate the implementation's compatibility when performing an upgrade. IMPORTANT: A proxy pointing at a proxiable contract should not be considered proxiable itself, because this risks bricking a proxy that upgrades to it, by delegating to itself until out of gas. Thus it is critical that this function revert if invoked through a proxy. This is guaranteed by the `notDelegated` modifier."
+				},
+				"rejectWork(uint256,string)": {
+					"details": "Reject submitted work",
+					"params": {
+						"feedback": "Feedback explaining the rejection",
+						"submissionId": "ID of the submission"
+					}
+				},
+				"releaseDisputedFunds(uint256,uint256,uint256,uint256,uint256,uint256)": {
+					"details": "Release disputed funds",
+					"params": {
+						"amount": "Amount to release",
+						"disputeId": "ID of the dispute",
+						"jobId": "ID of the job",
+						"platformFee": "Platform fee to deduct",
+						"winner": "Address of the winner (as uint256)"
+					},
+					"returns": {
+						"success": "True if the funds were released Note: Parameter loser is commented out in the implementation"
+					}
+				},
+				"releasePaymentInterchain(uint256,uint256,uint256)": {
+					"details": "Release payment for a milestone on interchain job",
+					"params": {
+						"amountReleased": "The amount that was released on the local chain",
+						"jobId": "ID of the job",
+						"milestoneIndex": "Index of the milestone"
+					}
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"resolveDispute(uint256,bool,uint8)": {
+					"details": "Resolve a dispute",
+					"params": {
+						"jobId": "ID of the job Note: Parameters favorFreelancer and freelancerShare are commented out in the implementation"
+					}
+				},
+				"selectApplicant(uint256,address)": {
+					"details": "Legacy function for assigning a job to a freelancer - kept for backward compatibility",
+					"params": {
+						"freelancer": "The address of the selected freelancer",
+						"jobId": "The ID of the job"
+					}
+				},
+				"setEarningsContract(address)": {
+					"details": "Set the earnings rewards contract address",
+					"params": {
+						"earningsContractAddress": "Address of the earnings contract"
+					}
+				},
+				"setUserRegistryContract(address)": {
+					"details": "Set the user registry contract address",
+					"params": {
+						"userRegistryAddress": "The address of the user registry contract"
+					}
+				},
+				"startJobInterChain(uint256,address,bool)": {
+					"details": "Start a job for an interchain application",
+					"params": {
+						"acceptProposedMilestones": "Whether to accept the applicant's proposed milestones",
+						"applicant": "The address of the selected applicant",
+						"jobId": "The ID of the job"
+					}
+				},
+				"startJobWithProposedMilestones(uint256,address,bool)": {
+					"details": "Start a job and accept milestone proposal",
+					"params": {
+						"acceptProposedMilestones": "Whether to accept the applicant's proposed milestones",
+						"applicant": "The address of the selected applicant",
+						"jobId": "The ID of the job"
+					}
+				},
+				"startJob_LockMilestone1(uint256,address)": {
+					"details": "Start job and lock the first milestone payment (original function)",
+					"params": {
+						"applicant": "The address of the selected applicant",
+						"jobId": "The ID of the job"
+					}
+				},
+				"startNextMilestone(uint256)": {
+					"details": "Start the next milestone and lock the payment",
+					"params": {
+						"jobId": "ID of the job"
+					}
+				},
+				"submitWork(uint256,string,string)": {
+					"details": "Submit work for a job",
+					"params": {
+						"comments": "Additional comments for the submission",
+						"jobId": "ID of the job",
+						"workHash": "IPFS hash containing the submitted work"
+					},
+					"returns": {
+						"_0": "submissionId The ID of the created submission"
+					}
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"upgradeToAndCall(address,bytes)": {
+					"custom:oz-upgrades-unsafe-allow-reachable": "delegatecall",
+					"details": "Upgrade the implementation of the proxy to `newImplementation`, and subsequently execute the function call encoded in `data`. Calls {_authorizeUpgrade}. Emits an {Upgraded} event."
+				}
+			},
+			"title": "OpenWorkJobMarket",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"openwork-job-market.sol": "OpenWorkJobMarket"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 300
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol": {
+			"keccak256": "0xc163fcf9bb10138631a9ba5564df1fa25db9adff73bd9ee868a8ae1858fe093a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9706d43a0124053d9880f6e31a59f31bc0a6a3dc1acd66ce0a16e1111658c5f6",
+				"dweb:/ipfs/QmUFmfowzkRwGtDu36cXV9SPTBHJ3n7dG9xQiK5B28jTf2"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0xdb4d24ee2c087c391d587cd17adfe5b3f9d93b3110b1388c2ab6c7c0ad1dcd05",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ab7b6d5b9e2b88176312967fe0f0e78f3d9a1422fa5e4b64e2440c35869b5d08",
+				"dweb:/ipfs/QmXKYWWyzcLg1B2k7Sb1qkEXgLCYfXecR9wYW5obRzWP1Q"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol": {
+			"keccak256": "0x574a7451e42724f7de29e2855c392a8a5020acd695169466a18459467d719d63",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5bc189f63b639ee173dd7b6fecc39baf7113bf161776aea22b34c57fdd1872ec",
+				"dweb:/ipfs/QmZAf2VtjDLRULqjJkde6LNsxAg12tUqpPqgUQQZbAjgtZ"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol": {
+			"keccak256": "0x2025ccf05f6f1f2fd4e078e552836f525a1864e3854ed555047cd732320ab29b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d27f4b23c2dee42394aebaf42bf238285230f472dfd3282a39c3f000ec28214f",
+				"dweb:/ipfs/QmQa3DnvccwdWJeWrjgXPnFMTWbzWQWR39hVqC7eEwo2PC"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol": {
+			"keccak256": "0xdbef5f0c787055227243a7318ef74c8a5a1108ca3a07f2b3a00ef67769e1e397",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://08e39f23d5b4692f9a40803e53a8156b72b4c1f9902a88cd65ba964db103dab9",
+				"dweb:/ipfs/QmPKn6EYDgpga7KtpkA8wV2yJCYGMtc9K4LkJfhKX2RVSV"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/CountersUpgradeable.sol": {
+			"keccak256": "0x798741e231b22b81e2dd2eddaaf8832dee4baf5cd8e2dbaa5c1dd12a1c053c4d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://c41e8a7a906b8f362c8b760a44edadc61782008ea2ecf377ac5b5325bf6c3912",
+				"dweb:/ipfs/QmcXr19zuH3YLzD6RZNE6UTzvsKSckdxZQnagPoDGkCHu2"
+			]
+		},
+		"@openzeppelin/contracts/interfaces/IERC1967.sol": {
+			"keccak256": "0xb25a4f11fa80c702bf5cd85adec90e6f6f507f32f4a8e6f5dbc31e8c10029486",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6917f8a323e7811f041aecd4d9fd6e92455a6fba38a797ac6f6e208c7912b79d",
+				"dweb:/ipfs/QmShuYv55wYHGi4EFkDB8QfF7ZCHoKk2efyz3AWY1ExSq7"
+			]
+		},
+		"@openzeppelin/contracts/interfaces/draft-IERC1822.sol": {
+			"keccak256": "0xc42facb5094f2f35f066a7155bda23545e39a3156faef3ddc00185544443ba7d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d3b36282ab029b46bd082619a308a2ea11c309967b9425b7b7a6eb0b0c1c3196",
+				"dweb:/ipfs/QmP2YVfDB2FoREax3vJu7QhDnyYRMw52WPrCD4vdT2kuDA"
+			]
+		},
+		"@openzeppelin/contracts/proxy/ERC1967/ERC1967Utils.sol": {
+			"keccak256": "0x8decfa54cec979c824b044b8128cd91d713f72c71fd7dfa54974624d8c949898",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://271f914261a19d87117a777e0924ada545c16191ef9b00cc40b0134fc14ebc70",
+				"dweb:/ipfs/QmdvVNWHGHQrGGPonZJs5NuzTevTjZRM2zayKrDJf7WBA2"
+			]
+		},
+		"@openzeppelin/contracts/proxy/beacon/IBeacon.sol": {
+			"keccak256": "0xc59a78b07b44b2cf2e8ab4175fca91e8eca1eee2df7357b8d2a8833e5ea1f64c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5aa4f07e65444784c29cd7bfcc2341b34381e4e5b5da9f0c5bd00d7f430e66fa",
+				"dweb:/ipfs/QmWRMh4Q9DpaU9GvsiXmDdoNYMyyece9if7hnfLz7uqzWM"
+			]
+		},
+		"@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0xaaa1d17c1129b127a4a401db2fbd72960e2671474be3d08cae71ccdc42f7624c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cb2f27cd3952aa667e198fba0d9b7bcec52fbb12c16f013c25fe6fb52b29cc0e",
+				"dweb:/ipfs/QmeuohBFoeyDPZA9JNCTEDz3VBfBD4EABWuWXVhHAuEpKR"
+			]
+		},
+		"@openzeppelin/contracts/utils/Errors.sol": {
+			"keccak256": "0x6afa713bfd42cf0f7656efa91201007ac465e42049d7de1d50753a373648c123",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ba1d02f4847670a1b83dec9f7d37f0b0418d6043447b69f3a29a5f9efc547fcf",
+				"dweb:/ipfs/QmQ7iH2keLNUKgq2xSWcRmuBE5eZ3F5whYAkAGzCNNoEWB"
+			]
+		},
+		"@openzeppelin/contracts/utils/StorageSlot.sol": {
+			"keccak256": "0xcf74f855663ce2ae00ed8352666b7935f6cddea2932fdf2c3ecd30a9b1cd0e97",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9f660b1f351b757dfe01438e59888f31f33ded3afcf5cb5b0d9bf9aa6f320a8b",
+				"dweb:/ipfs/QmarDJ5hZEgBtCmmrVzEZWjub9769eD686jmzb2XpSU1cM"
+			]
+		},
+		"interfaces/IOpenWorkJobMarket.sol": {
+			"keccak256": "0x878882e99bce324dbb623d4cbf19bc0150be5801a543dda85be102d1402c41e2",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e0db45f95345553532856e1f5c3d3257c4597af2824e9d9e4a9704a9421bd0ab",
+				"dweb:/ipfs/QmRNhNh4rkgrT7izWKLXqJEFUWvn23U13EDoA15cgzGBAm"
+			]
+		},
+		"interfaces/IOpenWorkUserRegistry.sol": {
+			"keccak256": "0xb79e292690ebee25a50c4c02dd5311749c27c80e7c37ba0afea2d69b6d1dc921",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bfbcdc425a15046ec9f66a482a19c9a16144950f2f4a1b20eb57209ffaafa542",
+				"dweb:/ipfs/QmbJDxSSaSTxSfdGjhFkTLQAgstzh7954iN5wZJd2eTnwF"
+			]
+		},
+		"interfaces/IUnifiedRewardsTracking.sol": {
+			"keccak256": "0xeab227b30da35a95665fb353c9d49d81bf53928f13105e83da50ac473c6e8e72",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fd049a7cd8d431627ced8630acd12f39f11edc2355555915488400e5e072af7e",
+				"dweb:/ipfs/QmRgxFrp824qSZ29dYJZMWdFqc4e71SKfZnuQkZ1mDyCnk"
+			]
+		},
+		"openwork-job-market.sol": {
+			"keccak256": "0x6bda1e1d619ce20f54e44f1336fb73550712282b7ce236fe2c4dc75b72574c7e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://507a9674ce8729e16a762fd9a879bececa7312cc1a99db311e778bb326e75a41",
+				"dweb:/ipfs/Qmdc6iczXP7TXBmKdHGZ7cymaV8Xv9jZL4jvGCppwSoTWy"
+			]
+		}
+	},
+	"version": 1
+}

@@ -1,0 +1,364 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"addOracleMember(string,address,uint256)": "3bf42877",
+			"getOracleMemberCount(string)": "3ce0f2f7",
+			"getOracleMemberVotingWeight(string,address)": "1eed5329",
+			"getSkillIpfsHash(string)": "c7de6a92",
+			"hasUserSkill(address,string)": "76a97755",
+			"isOracleActive(string)": "0308b414",
+			"isOracleMember(string,address)": "6fd88eb0",
+			"registerSkill(string,string,uint256)": "63664263",
+			"removeOracleMember(string,address)": "466a9289",
+			"removeStake(string,address,uint256)": "7882a177",
+			"setOracleActive(string,bool)": "2ae18ca8",
+			"validateOracleForDisputes(string)": "33f40bc8",
+			"verifyUserSkill(address,string)": "225a2308"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "member",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "stakeAmount",
+					"type": "uint256"
+				}
+			],
+			"name": "addOracleMember",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				}
+			],
+			"name": "getOracleMemberCount",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "member",
+					"type": "address"
+				}
+			],
+			"name": "getOracleMemberVotingWeight",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "weight",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				}
+			],
+			"name": "getSkillIpfsHash",
+			"outputs": [
+				{
+					"internalType": "string",
+					"name": "",
+					"type": "string"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "user",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				}
+			],
+			"name": "hasUserSkill",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				}
+			],
+			"name": "isOracleActive",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "member",
+					"type": "address"
+				}
+			],
+			"name": "isOracleMember",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "ipfsHash",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "minimumStake",
+					"type": "uint256"
+				}
+			],
+			"name": "registerSkill",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "member",
+					"type": "address"
+				}
+			],
+			"name": "removeOracleMember",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "member",
+					"type": "address"
+				},
+				{
+					"internalType": "uint256",
+					"name": "amount",
+					"type": "uint256"
+				}
+			],
+			"name": "removeStake",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				},
+				{
+					"internalType": "bool",
+					"name": "active",
+					"type": "bool"
+				}
+			],
+			"name": "setOracleActive",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				}
+			],
+			"name": "validateOracleForDisputes",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "isValid",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "address",
+					"name": "user",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "skillName",
+					"type": "string"
+				}
+			],
+			"name": "verifyUserSkill",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

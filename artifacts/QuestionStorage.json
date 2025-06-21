@@ -1,0 +1,60 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "60566037600b82828239805160001a607314602a57634e487b7160e01b600052600060045260246000fd5b30600052607381538281f3fe73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122051f5af1fb406fd9ad1c4904801d1d4d4c63fc8d664588d9635a10eb89b3dba6264736f6c634300081c0033",
+			"opcodes": "PUSH1 0x56 PUSH1 0x37 PUSH1 0xB DUP3 DUP3 DUP3 CODECOPY DUP1 MLOAD PUSH1 0x0 BYTE PUSH1 0x73 EQ PUSH1 0x2A JUMPI PUSH4 0x4E487B71 PUSH1 0xE0 SHL PUSH1 0x0 MSTORE PUSH1 0x0 PUSH1 0x4 MSTORE PUSH1 0x24 PUSH1 0x0 REVERT JUMPDEST ADDRESS PUSH1 0x0 MSTORE PUSH1 0x73 DUP2 MSTORE8 DUP3 DUP2 RETURN INVALID PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 MLOAD CREATE2 0xAF 0x1F 0xB4 MOD REVERT SWAP11 0xD1 0xC4 SWAP1 BASEFEE ADD 0xD1 0xD4 0xD4 0xC6 EXTCODEHASH 0xC8 0xD6 PUSH5 0x588D9635A1 0xE 0xB8 SWAP12 RETURNDATASIZE 0xBA PUSH3 0x64736F PUSH13 0x634300081C0033000000000000 ",
+			"sourceMap": "990:298:0:-:0;;;;;;;;;;;;;;;-1:-1:-1;;;990:298:0;;;;;;;;;;;;;;;;;"
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "73000000000000000000000000000000000000000030146080604052600080fdfea264697066735822122051f5af1fb406fd9ad1c4904801d1d4d4c63fc8d664588d9635a10eb89b3dba6264736f6c634300081c0033",
+			"opcodes": "PUSH20 0x0 ADDRESS EQ PUSH1 0x80 PUSH1 0x40 MSTORE PUSH1 0x0 DUP1 REVERT INVALID LOG2 PUSH5 0x6970667358 0x22 SLT KECCAK256 MLOAD CREATE2 0xAF 0x1F 0xB4 MOD REVERT SWAP11 0xD1 0xC4 SWAP1 BASEFEE ADD 0xD1 0xD4 0xD4 0xC6 EXTCODEHASH 0xC8 0xD6 PUSH5 0x588D9635A1 0xE 0xB8 SWAP12 RETURNDATASIZE 0xBA PUSH3 0x64736F PUSH13 0x634300081C0033000000000000 ",
+			"sourceMap": "990:298:0:-:0;;;;;;;;"
+		},
+		"gasEstimates": {
+			"creation": {
+				"codeDepositCost": "17200",
+				"executionCost": "103",
+				"totalCost": "17303"
+			}
+		},
+		"methodIdentifiers": {}
+	},
+	"abi": []
+}

@@ -1,0 +1,284 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "endpoint",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint32",
+						"name": "chainSelector",
+						"type": "uint32"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "addr",
+						"type": "bytes32"
+					}
+				],
+				"name": "RemoteSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint32",
+						"name": "srcChain",
+						"type": "uint32"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "guid",
+						"type": "bytes32"
+					}
+				],
+				"name": "StringReceived",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint32",
+						"name": "dstChain",
+						"type": "uint32"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "bytes32",
+						"name": "guid",
+						"type": "bytes32"
+					}
+				],
+				"name": "StringSent",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "ENDPOINT",
+				"outputs": [
+					{
+						"internalType": "contract ILZEndpointV2",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "lastReceived",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint32",
+								"name": "srcChainId",
+								"type": "uint32"
+							},
+							{
+								"internalType": "bytes32",
+								"name": "sender",
+								"type": "bytes32"
+							}
+						],
+						"internalType": "struct Origin",
+						"name": "origin",
+						"type": "tuple"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "guid",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "bytes",
+						"name": "payload",
+						"type": "bytes"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "",
+						"type": "bytes"
+					}
+				],
+				"name": "lzReceive",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "dstChainSelector",
+						"type": "uint32"
+					},
+					{
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					}
+				],
+				"name": "quoteSend",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "nativeFee",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "",
+						"type": "uint32"
+					}
+				],
+				"name": "remote",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "dstChainSelector",
+						"type": "uint32"
+					},
+					{
+						"internalType": "string",
+						"name": "message",
+						"type": "string"
+					}
+				],
+				"name": "sendString",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "chainSelector",
+						"type": "uint32"
+					},
+					{
+						"internalType": "bytes32",
+						"name": "peer",
+						"type": "bytes32"
+					}
+				],
+				"name": "setRemote",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"stateMutability": "payable",
+				"type": "receive"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {
+				"quoteSend(uint32,string)": {
+					"notice": "Return the native fee required to send `message` to `dstChainSelector`."
+				}
+			},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"LocalOpenworkSender.sol": "OpenWorkOApp"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"LocalOpenworkSender.sol": {
+			"keccak256": "0x96e9506b6d8140e8026ec17540a4f83b44242e237c1116d20cd6082c89029871",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ecd75f59c2f8e2eb1dcd308218e3c61796c72aed9da720bb3367d2339e9460ca",
+				"dweb:/ipfs/QmetKpXNSwxHC5xEJAkcxdas4mTmdo5bCLhecpPyjNynT2"
+			]
+		}
+	},
+	"version": 1
+}

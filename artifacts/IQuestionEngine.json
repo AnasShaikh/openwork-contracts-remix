@@ -1,0 +1,248 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"askAthena(string,string,uint256)": "3554930c",
+			"claimQuestionFeeRefund(uint256)": "e7f6b8ea",
+			"claimQuestionFeeReward(uint256)": "d9ba87e8",
+			"getQuestionDetails(uint256)": "9f8c45cf",
+			"getQuestionVotes(uint256)": "8c474a11",
+			"voteOnQuestion(uint256,bool,string)": "513914e0"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "questionHash",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "fee",
+					"type": "uint256"
+				}
+			],
+			"name": "askAthena",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				}
+			],
+			"name": "claimQuestionFeeRefund",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "amount",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				}
+			],
+			"name": "claimQuestionFeeReward",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "amount",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				}
+			],
+			"name": "getQuestionDetails",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "id",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "asker",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "questionHash",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "oracleName",
+							"type": "string"
+						},
+						{
+							"internalType": "enum QuestionStorage.QuestionStatus",
+							"name": "status",
+							"type": "uint8"
+						},
+						{
+							"internalType": "uint256",
+							"name": "createdAt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "answeredAt",
+							"type": "uint256"
+						}
+					],
+					"internalType": "struct QuestionStorage.Question",
+					"name": "question",
+					"type": "tuple"
+				},
+				{
+					"internalType": "uint256",
+					"name": "votesFor",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "votesAgainst",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				}
+			],
+			"name": "getQuestionVotes",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "votesFor",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "votesAgainst",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "questionId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bool",
+					"name": "inFavor",
+					"type": "bool"
+				},
+				{
+					"internalType": "string",
+					"name": "reasonHash",
+					"type": "string"
+				}
+			],
+			"name": "voteOnQuestion",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

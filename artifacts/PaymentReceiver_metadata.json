@@ -1,0 +1,66 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "getBalance",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "receivePayment",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"payable-tests-receiver.sol": "PaymentReceiver"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 300
+		},
+		"remappings": []
+	},
+	"sources": {
+		"payable-tests-receiver.sol": {
+			"keccak256": "0x0242bc4271a7255d6e2ef7b5f46aebb4dfdbc38c7a7b1283da8369a7c7b5adbc",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://0c4611a1e461468623354306c066dbd4f5e0517d9ff72aac0d396b65829f71f6",
+				"dweb:/ipfs/QmPcdcAwcRXxJXHnCX8EgdZyVPbV8F1QZ72vsuKDQoqTny"
+			]
+		}
+	},
+	"version": 1
+}

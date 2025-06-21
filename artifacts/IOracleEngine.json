@@ -1,0 +1,316 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"activateOracle(string)": "5909bfde",
+			"addOracleMember(string,address)": "c9d28293",
+			"createOracle(string,string)": "48b5373a",
+			"deactivateOracle(string)": "6c20a6f6",
+			"getOracleDetails(string)": "3cf852c4",
+			"isActive(string)": "c8902a21",
+			"isOracleMember(string,address)": "6fd88eb0",
+			"isReportedInOracle(string,address)": "4ff37db3",
+			"removeOracleMember(string,address)": "466a9289",
+			"reportMaliciousMember(string,address,string)": "20c56971"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				}
+			],
+			"name": "activateOracle",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "member",
+					"type": "address"
+				}
+			],
+			"name": "addOracleMember",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "description",
+					"type": "string"
+				}
+			],
+			"name": "createOracle",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				}
+			],
+			"name": "deactivateOracle",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				}
+			],
+			"name": "getOracleDetails",
+			"outputs": [
+				{
+					"internalType": "string",
+					"name": "name",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "description",
+					"type": "string"
+				},
+				{
+					"internalType": "address[]",
+					"name": "members",
+					"type": "address[]"
+				},
+				{
+					"internalType": "bool",
+					"name": "active",
+					"type": "bool"
+				},
+				{
+					"internalType": "uint256",
+					"name": "createdAt",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "memberCount",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				}
+			],
+			"name": "isActive",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "member",
+					"type": "address"
+				}
+			],
+			"name": "isOracleMember",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "isMember",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "member",
+					"type": "address"
+				}
+			],
+			"name": "isReportedInOracle",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "reported",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "member",
+					"type": "address"
+				}
+			],
+			"name": "removeOracleMember",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "address",
+					"name": "member",
+					"type": "address"
+				},
+				{
+					"internalType": "string",
+					"name": "evidenceHash",
+					"type": "string"
+				}
+			],
+			"name": "reportMaliciousMember",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

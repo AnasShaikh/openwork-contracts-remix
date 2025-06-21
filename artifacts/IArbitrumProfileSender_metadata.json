@@ -1,0 +1,69 @@
+{
+	"compiler": {
+		"version": "0.8.30+commit.73712a01"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint32",
+						"name": "_dstEid",
+						"type": "uint32"
+					},
+					{
+						"internalType": "string",
+						"name": "_username",
+						"type": "string"
+					},
+					{
+						"internalType": "bytes",
+						"name": "_options",
+						"type": "bytes"
+					}
+				],
+				"name": "createProfile",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"wrapper-non-uups.sol": "IArbitrumProfileSender"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"wrapper-non-uups.sol": {
+			"keccak256": "0x90a5b98cb6ddafbc28ff1aa44172d9df4f314fb6dbb8945a3c0a22561470cf65",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4944ef78249ffddeebcd6394b8a63c2696e365151138b2244beb4124ec099f1a",
+				"dweb:/ipfs/QmPeWKNhQEwS569uVSqivrkFN5RYfP1rnTcJJJtPUG5GUm"
+			]
+		}
+	},
+	"version": 1
+}

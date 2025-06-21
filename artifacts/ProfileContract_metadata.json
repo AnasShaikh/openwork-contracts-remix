@@ -1,0 +1,790 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "applicationId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "applicationHash",
+						"type": "string"
+					}
+				],
+				"name": "JobApplication",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "jobGiver",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "jobDetailHash",
+						"type": "string"
+					}
+				],
+				"name": "JobPosted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "uint256",
+						"name": "applicationId",
+						"type": "uint256"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "selectedApplicant",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "bool",
+						"name": "useApplicantMilestones",
+						"type": "bool"
+					}
+				],
+				"name": "JobStarted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "string",
+						"name": "ipfsHash",
+						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "address",
+						"name": "referrer",
+						"type": "address"
+					}
+				],
+				"name": "ProfileCreated",
+				"type": "event"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_applicationHash",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "descriptionHash",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amount",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct ProfileContract.MilestonePayment[]",
+						"name": "_proposedMilestones",
+						"type": "tuple[]"
+					}
+				],
+				"name": "applyToJob",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_ipfsHash",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_referrerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_rating",
+						"type": "uint256"
+					}
+				],
+				"name": "createProfile",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_applicationId",
+						"type": "uint256"
+					}
+				],
+				"name": "getApplication",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "jobId",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "applicant",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "applicationHash",
+								"type": "string"
+							},
+							{
+								"components": [
+									{
+										"internalType": "string",
+										"name": "descriptionHash",
+										"type": "string"
+									},
+									{
+										"internalType": "uint256",
+										"name": "amount",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct ProfileContract.MilestonePayment[]",
+								"name": "proposedMilestones",
+								"type": "tuple[]"
+							}
+						],
+						"internalType": "struct ProfileContract.Application",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "getJob",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "jobGiver",
+								"type": "address"
+							},
+							{
+								"internalType": "address[]",
+								"name": "applicants",
+								"type": "address[]"
+							},
+							{
+								"internalType": "string",
+								"name": "jobDetailHash",
+								"type": "string"
+							},
+							{
+								"internalType": "bool",
+								"name": "isOpen",
+								"type": "bool"
+							},
+							{
+								"internalType": "string[]",
+								"name": "workSubmissions",
+								"type": "string[]"
+							},
+							{
+								"components": [
+									{
+										"internalType": "string",
+										"name": "descriptionHash",
+										"type": "string"
+									},
+									{
+										"internalType": "uint256",
+										"name": "amount",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct ProfileContract.MilestonePayment[]",
+								"name": "milestonePayments",
+								"type": "tuple[]"
+							},
+							{
+								"components": [
+									{
+										"internalType": "string",
+										"name": "descriptionHash",
+										"type": "string"
+									},
+									{
+										"internalType": "uint256",
+										"name": "amount",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct ProfileContract.MilestonePayment[]",
+								"name": "finalMilestones",
+								"type": "tuple[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "currentLockedAmount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "currentMilestone",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "selectedApplicant",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "selectedApplicationId",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct ProfileContract.Job",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "getJobDetails",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "uint256",
+								"name": "id",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "jobGiver",
+								"type": "address"
+							},
+							{
+								"internalType": "address[]",
+								"name": "applicants",
+								"type": "address[]"
+							},
+							{
+								"internalType": "string",
+								"name": "jobDetailHash",
+								"type": "string"
+							},
+							{
+								"internalType": "bool",
+								"name": "isOpen",
+								"type": "bool"
+							},
+							{
+								"internalType": "string[]",
+								"name": "workSubmissions",
+								"type": "string[]"
+							},
+							{
+								"components": [
+									{
+										"internalType": "string",
+										"name": "descriptionHash",
+										"type": "string"
+									},
+									{
+										"internalType": "uint256",
+										"name": "amount",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct ProfileContract.MilestonePayment[]",
+								"name": "milestonePayments",
+								"type": "tuple[]"
+							},
+							{
+								"components": [
+									{
+										"internalType": "string",
+										"name": "descriptionHash",
+										"type": "string"
+									},
+									{
+										"internalType": "uint256",
+										"name": "amount",
+										"type": "uint256"
+									}
+								],
+								"internalType": "struct ProfileContract.MilestonePayment[]",
+								"name": "finalMilestones",
+								"type": "tuple[]"
+							},
+							{
+								"internalType": "uint256",
+								"name": "totalPaid",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "currentLockedAmount",
+								"type": "uint256"
+							},
+							{
+								"internalType": "uint256",
+								"name": "currentMilestone",
+								"type": "uint256"
+							},
+							{
+								"internalType": "address",
+								"name": "selectedApplicant",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "selectedApplicationId",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct ProfileContract.Job",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_user",
+						"type": "address"
+					}
+				],
+				"name": "getProfile",
+				"outputs": [
+					{
+						"components": [
+							{
+								"internalType": "address",
+								"name": "userAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "string",
+								"name": "ipfsHash",
+								"type": "string"
+							},
+							{
+								"internalType": "address",
+								"name": "referrerAddress",
+								"type": "address"
+							},
+							{
+								"internalType": "uint256",
+								"name": "rating",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct ProfileContract.Profile",
+						"name": "",
+						"type": "tuple"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "hasProfile",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_jobId",
+						"type": "uint256"
+					}
+				],
+				"name": "isOpen",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "jobApplicationCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "jobApplications",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "applicationHash",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "jobCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "jobs",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "id",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "jobGiver",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "jobDetailHash",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isOpen",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalPaid",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentLockedAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "currentMilestone",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "selectedApplicant",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "selectedApplicationId",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_jobDetailHash",
+						"type": "string"
+					},
+					{
+						"components": [
+							{
+								"internalType": "string",
+								"name": "descriptionHash",
+								"type": "string"
+							},
+							{
+								"internalType": "uint256",
+								"name": "amount",
+								"type": "uint256"
+							}
+						],
+						"internalType": "struct ProfileContract.MilestonePayment[]",
+						"name": "_milestonePayments",
+						"type": "tuple[]"
+					}
+				],
+				"name": "postJob",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "profiles",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "userAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "ipfsHash",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "referrerAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rating",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_applicationId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_useApplicantMilestones",
+						"type": "bool"
+					}
+				],
+				"name": "startJob",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"native-job-contract.sol": "ProfileContract"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 300
+		},
+		"remappings": []
+	},
+	"sources": {
+		"native-job-contract.sol": {
+			"keccak256": "0xaa89763d6f8ed09961df38e310fdaf819f42cbf69a5861139ab167e080258b76",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://36080a903beb4a418b9ee6f66133811299b4fcdb1f36a640558384f933d71ce0",
+				"dweb:/ipfs/QmSG6sqY2vaJWfQ8zH3pC5sM8MuwF8L3x3WfuCpTT7diNr"
+			]
+		}
+	},
+	"version": 1
+}

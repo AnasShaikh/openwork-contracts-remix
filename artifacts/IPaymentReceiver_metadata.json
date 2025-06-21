@@ -1,0 +1,53 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"name": "receivePayment",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"payable-test.sol": "IPaymentReceiver"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 300
+		},
+		"remappings": []
+	},
+	"sources": {
+		"payable-test.sol": {
+			"keccak256": "0xfe7512340726aa5a540b6e434f011ba1bb3b196beb0dcbc986086c0e077622ea",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://8504e4b5c503d541ce7eadf62d75c655dda9450eb35b3f920af984c9f7231d81",
+				"dweb:/ipfs/QmeHBK8YHJjrp3PD11abhUb8M2CedRrXtcHgUanXVjezAa"
+			]
+		}
+	},
+	"version": 1
+}

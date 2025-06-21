@@ -1,0 +1,1391 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "target",
+						"type": "address"
+					}
+				],
+				"name": "AddressEmptyCode",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "implementation",
+						"type": "address"
+					}
+				],
+				"name": "ERC1967InvalidImplementation",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "ERC1967NonPayable",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "FailedCall",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "InvalidInitialization",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "NotInitializing",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "owner",
+						"type": "address"
+					}
+				],
+				"name": "OwnableInvalidOwner",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "account",
+						"type": "address"
+					}
+				],
+				"name": "OwnableUnauthorizedAccount",
+				"type": "error"
+			},
+			{
+				"inputs": [],
+				"name": "UUPSUnauthorizedCallContext",
+				"type": "error"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "slot",
+						"type": "bytes32"
+					}
+				],
+				"name": "UUPSUnsupportedProxiableUUID",
+				"type": "error"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "actionWeight",
+						"type": "uint256"
+					}
+				],
+				"name": "GovernanceActionRecorded",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint64",
+						"name": "version",
+						"type": "uint64"
+					}
+				],
+				"name": "Initialized",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "jobId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "jobValue",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "rewardsAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "JobProcessed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "previousOwner",
+						"type": "address"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "OwnershipTransferred",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "bandIndex",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "minJobValue",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "maxJobValue",
+						"type": "uint256"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "rewardAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "RewardBandSet",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "RewardsClaimed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "bytes32",
+						"name": "jobId",
+						"type": "bytes32"
+					},
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "jobPoster",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "jobValue",
+						"type": "uint256"
+					}
+				],
+				"name": "UnifiedJobCompleted",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "UnifiedRewardsClaimed",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "UnifiedRewardsEarned",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
+						"name": "implementation",
+						"type": "address"
+					}
+				],
+				"name": "Upgraded",
+				"type": "event"
+			},
+			{
+				"inputs": [],
+				"name": "DECIMALS",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "UPGRADE_INTERFACE_VERSION",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "addToClaimAllowlist",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobValue",
+						"type": "uint256"
+					}
+				],
+				"name": "calculateRewardAmount",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobValue",
+						"type": "uint256"
+					}
+				],
+				"name": "calculateTokenReward",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "claimRewards",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "crossChainBridge",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "daoGovernanceContract",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "getClaimedRewards",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "getPendingRewards",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "getTotalStakedTokens",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					}
+				],
+				"name": "getUserStats",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "totalJobs",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalPending",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalClaimed",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "governanceActionTracker",
+				"outputs": [
+					{
+						"internalType": "contract IGovernanceActionTracker",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "level",
+						"type": "uint256"
+					}
+				],
+				"name": "hasCompletedGovernanceActions",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "initialOwner",
+						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_jobMarketContract",
+						"type": "address"
+					}
+				],
+				"name": "initialize",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "jobMarketContract",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "owner",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "processedClaims",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"name": "processedJobs",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "proxiableUUID",
+				"outputs": [
+					{
+						"internalType": "bytes32",
+						"name": "",
+						"type": "bytes32"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "recordEarnings",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "user",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "actionWeight",
+						"type": "uint256"
+					}
+				],
+				"name": "recordGovernanceAction",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "bytes32",
+						"name": "jobId",
+						"type": "bytes32"
+					},
+					{
+						"internalType": "uint256",
+						"name": "jobValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "recipient",
+						"type": "address"
+					}
+				],
+				"name": "recordJobCompletion",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "rewardsAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "renounceOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "rewardBands",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "minJobValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxJobValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rewardAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_crossChainBridge",
+						"type": "address"
+					}
+				],
+				"name": "setCrossChainBridge",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_daoGovernanceContract",
+						"type": "address"
+					}
+				],
+				"name": "setDAOGovernanceContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_governanceActionTracker",
+						"type": "address"
+					}
+				],
+				"name": "setGovernanceActionTracker",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_jobMarketContract",
+						"type": "address"
+					}
+				],
+				"name": "setJobMarketContract",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "duration",
+						"type": "uint256"
+					}
+				],
+				"name": "stakeTokens",
+				"outputs": [],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newOwner",
+						"type": "address"
+					}
+				],
+				"name": "transferOwnership",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "stakeIndex",
+						"type": "uint256"
+					}
+				],
+				"name": "unstakeTokens",
+				"outputs": [],
+				"stateMutability": "pure",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "bandIndex",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "minJobValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "maxJobValue",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "rewardAmount",
+						"type": "uint256"
+					}
+				],
+				"name": "updateRewardBand",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "newImplementation",
+						"type": "address"
+					},
+					{
+						"internalType": "bytes",
+						"name": "data",
+						"type": "bytes"
+					}
+				],
+				"name": "upgradeToAndCall",
+				"outputs": [],
+				"stateMutability": "payable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "userRewards",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "pendingAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "claimedAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalJobsCompleted",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastJobTimestamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "lastClaimTimestamp",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"details": "Contract for tracking job completions and calculating rewards based on job value bands Deployed on Optimism for tracking rewards that will be paid out on Ethereum Now supports UUPS Upgradeable pattern",
+			"errors": {
+				"AddressEmptyCode(address)": [
+					{
+						"details": "There's no code at `target` (it is not a contract)."
+					}
+				],
+				"ERC1967InvalidImplementation(address)": [
+					{
+						"details": "The `implementation` of the proxy is invalid."
+					}
+				],
+				"ERC1967NonPayable()": [
+					{
+						"details": "An upgrade function sees `msg.value > 0` that may be lost."
+					}
+				],
+				"FailedCall()": [
+					{
+						"details": "A call to an address target failed. The target may have reverted."
+					}
+				],
+				"InvalidInitialization()": [
+					{
+						"details": "The contract is already initialized."
+					}
+				],
+				"NotInitializing()": [
+					{
+						"details": "The contract is not initializing."
+					}
+				],
+				"OwnableInvalidOwner(address)": [
+					{
+						"details": "The owner is not a valid owner account. (eg. `address(0)`)"
+					}
+				],
+				"OwnableUnauthorizedAccount(address)": [
+					{
+						"details": "The caller account is not authorized to perform an operation."
+					}
+				],
+				"UUPSUnauthorizedCallContext()": [
+					{
+						"details": "The call is from an unauthorized context."
+					}
+				],
+				"UUPSUnsupportedProxiableUUID(bytes32)": [
+					{
+						"details": "The storage `slot` is unsupported as a UUID."
+					}
+				]
+			},
+			"events": {
+				"Initialized(uint64)": {
+					"details": "Triggered when the contract has been initialized or reinitialized."
+				},
+				"Upgraded(address)": {
+					"details": "Emitted when the implementation is upgraded."
+				}
+			},
+			"kind": "dev",
+			"methods": {
+				"addToClaimAllowlist(address,uint256)": {
+					"details": "Adds a user to the claim allowlist with a specific amount (unused in this implementation)",
+					"params": {
+						"amount": "The amount to allow",
+						"user": "The address to add to the allowlist"
+					},
+					"returns": {
+						"_0": "success Whether the operation was successful"
+					}
+				},
+				"calculateRewardAmount(uint256)": {
+					"details": "Calculates the reward amount based on job value",
+					"params": {
+						"jobValue": "The value of the job in USD (6 decimals)"
+					},
+					"returns": {
+						"_0": "The calculated reward amount"
+					}
+				},
+				"calculateTokenReward(uint256)": {
+					"details": "Calculate token reward based on job value",
+					"params": {
+						"jobValue": "USD value of the job"
+					},
+					"returns": {
+						"_0": "Amount of tokens to be rewarded"
+					}
+				},
+				"claimRewards()": {
+					"details": "Claims rewards for the caller Implementation of IUnifiedRewardsTracking.claimRewards()"
+				},
+				"constructor": {
+					"custom:oz-upgrades-unsafe-allow": "constructor"
+				},
+				"getClaimedRewards(address)": {
+					"details": "Returns the amount of claimed rewards for a user",
+					"params": {
+						"user": "The address to check"
+					},
+					"returns": {
+						"_0": "The amount of claimed rewards"
+					}
+				},
+				"getPendingRewards(address)": {
+					"details": "Returns the amount of pending rewards for a user",
+					"params": {
+						"user": "The address to check"
+					},
+					"returns": {
+						"_0": "The amount of pending rewards"
+					}
+				},
+				"getTotalStakedTokens(address)": {
+					"details": "Get total staked tokens for a user",
+					"params": {
+						"user": "Address of the user"
+					},
+					"returns": {
+						"_0": "Total staked tokens"
+					}
+				},
+				"getUserStats(address)": {
+					"details": "Gets user total stats",
+					"params": {
+						"user": "The address to check"
+					},
+					"returns": {
+						"totalClaimed": "Total claimed rewards",
+						"totalJobs": "Total jobs completed by the user",
+						"totalPending": "Total pending rewards"
+					}
+				},
+				"hasCompletedGovernanceActions(address,uint256)": {
+					"details": "Check if user has completed governance actions for a level",
+					"params": {
+						"level": "Governance level",
+						"user": "Address of the user"
+					},
+					"returns": {
+						"_0": "Whether user has completed required actions"
+					}
+				},
+				"initialize(address,address)": {
+					"details": "Initialize function for proxy contracts This should be called right after proxy deployment to properly set ownership and contract parameters",
+					"params": {
+						"_jobMarketContract": "The job market contract address that can record completions",
+						"initialOwner": "The initial owner address for the proxy"
+					}
+				},
+				"owner()": {
+					"details": "Returns the address of the current owner."
+				},
+				"proxiableUUID()": {
+					"details": "Implementation of the ERC-1822 {proxiableUUID} function. This returns the storage slot used by the implementation. It is used to validate the implementation's compatibility when performing an upgrade. IMPORTANT: A proxy pointing at a proxiable contract should not be considered proxiable itself, because this risks bricking a proxy that upgrades to it, by delegating to itself until out of gas. Thus it is critical that this function revert if invoked through a proxy. This is guaranteed by the `notDelegated` modifier."
+				},
+				"recordEarnings(address,uint256)": {
+					"details": "Record earnings for a user - from IEarningsRewardsContract",
+					"params": {
+						"amount": "Amount of earnings to record",
+						"user": "Address of the user"
+					}
+				},
+				"recordGovernanceAction(address,uint256)": {
+					"details": "Record a governance action",
+					"params": {
+						"actionWeight": "Weight of the action",
+						"user": "Address of the user"
+					}
+				},
+				"recordJobCompletion(bytes32,uint256,address)": {
+					"details": "Records a job completion and calculates rewards",
+					"params": {
+						"jobId": "Unique identifier for the job",
+						"jobValue": "The value of the job in USD (6 decimals)",
+						"recipient": "Address that will receive the rewards"
+					},
+					"returns": {
+						"rewardsAmount": "The amount of rewards calculated for this job"
+					}
+				},
+				"renounceOwnership()": {
+					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
+				},
+				"setCrossChainBridge(address)": {
+					"details": "Updates the cross-chain bridge address",
+					"params": {
+						"_crossChainBridge": "The new address"
+					}
+				},
+				"setDAOGovernanceContract(address)": {
+					"details": "Updates the DAO governance contract address",
+					"params": {
+						"_daoGovernanceContract": "The new address"
+					}
+				},
+				"setGovernanceActionTracker(address)": {
+					"details": "Sets the Governance Action Tracker contract address",
+					"params": {
+						"_governanceActionTracker": "The new address"
+					}
+				},
+				"setJobMarketContract(address)": {
+					"details": "Sets the JobMarket contract address",
+					"params": {
+						"_jobMarketContract": "The new JobMarket contract address"
+					}
+				},
+				"stakeTokens(uint256,uint256)": {
+					"details": "Stake tokens",
+					"params": {
+						"amount": "Amount to stake",
+						"duration": "Duration in days"
+					}
+				},
+				"transferOwnership(address)": {
+					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
+				},
+				"unstakeTokens(uint256)": {
+					"details": "Unstake tokens",
+					"params": {
+						"stakeIndex": "Index of the stake to unstake"
+					}
+				},
+				"updateRewardBand(uint256,uint256,uint256,uint256)": {
+					"details": "Updates a reward band configuration",
+					"params": {
+						"bandIndex": "The index of the band to update",
+						"maxJobValue": "The maximum job value for this band",
+						"minJobValue": "The minimum job value for this band",
+						"rewardAmount": "The reward amount for this band"
+					}
+				},
+				"upgradeToAndCall(address,bytes)": {
+					"custom:oz-upgrades-unsafe-allow-reachable": "delegatecall",
+					"details": "Upgrade the implementation of the proxy to `newImplementation`, and subsequently execute the function call encoded in `data`. Calls {_authorizeUpgrade}. Emits an {Upgraded} event."
+				}
+			},
+			"title": "RewardsTrackingContractUSDT",
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"rewards-tracking-contract.sol": "RewardsTrackingContractUSDT"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 300
+		},
+		"remappings": []
+	},
+	"sources": {
+		"@openzeppelin/contracts-upgradeable/access/OwnableUpgradeable.sol": {
+			"keccak256": "0xc163fcf9bb10138631a9ba5564df1fa25db9adff73bd9ee868a8ae1858fe093a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9706d43a0124053d9880f6e31a59f31bc0a6a3dc1acd66ce0a16e1111658c5f6",
+				"dweb:/ipfs/QmUFmfowzkRwGtDu36cXV9SPTBHJ3n7dG9xQiK5B28jTf2"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/interfaces/IERC1967Upgradeable.sol": {
+			"keccak256": "0x47d6e06872b12e72c79d1b5eb55842f860b5fb1207b2317c2358d2766b950a7b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ac55bf6f92fc7b90c6d79d346163a0a02bd5c648c7fede08b20e5da96d4ae2a0",
+				"dweb:/ipfs/QmQoSrHhka35iKDK5iyNt8cuXXS5ANXVPjLhfsJjktB8V9"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/interfaces/draft-IERC1822Upgradeable.sol": {
+			"keccak256": "0x77c89f893e403efc6929ba842b7ccf6534d4ffe03afe31670b4a528c0ad78c0f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://496bd9b3df2455d571018c09f0c6badd29713fdeb907c6aa09d8d28cb603f053",
+				"dweb:/ipfs/QmXdJDyYs6WMwMh21dez2BYPxhSUaUYFMDtVNcn2cgFR79"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/proxy/ERC1967/ERC1967UpgradeUpgradeable.sol": {
+			"keccak256": "0x7795808e3899c805254e3ae58074b20f799b466e3f43e057e47bedee5fb771f8",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://319853a2a682f3f72411507242669ef5e76e0ad3457be53102439709ee8948f0",
+				"dweb:/ipfs/QmRtm4Ese9u4jfxXyuWPXLwzenwFotuQjAWV7rXtZTB1E9"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/proxy/beacon/IBeaconUpgradeable.sol": {
+			"keccak256": "0x24b86ac8c005b8c654fbf6ac34a5a4f61580d7273541e83e013e89d66fbf0908",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4dbfe1a3b3b3fb64294ce41fd2ad362e7b7012208117864f42c1a67620a6d5c1",
+				"dweb:/ipfs/QmVMU5tWt7zBQMmf5cpMX8UMHV86T3kFeTxBTBjFqVWfoJ"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/proxy/utils/Initializable.sol": {
+			"keccak256": "0xdb4d24ee2c087c391d587cd17adfe5b3f9d93b3110b1388c2ab6c7c0ad1dcd05",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ab7b6d5b9e2b88176312967fe0f0e78f3d9a1422fa5e4b64e2440c35869b5d08",
+				"dweb:/ipfs/QmXKYWWyzcLg1B2k7Sb1qkEXgLCYfXecR9wYW5obRzWP1Q"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/proxy/utils/UUPSUpgradeable.sol": {
+			"keccak256": "0x574a7451e42724f7de29e2855c392a8a5020acd695169466a18459467d719d63",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5bc189f63b639ee173dd7b6fecc39baf7113bf161776aea22b34c57fdd1872ec",
+				"dweb:/ipfs/QmZAf2VtjDLRULqjJkde6LNsxAg12tUqpPqgUQQZbAjgtZ"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/security/ReentrancyGuardUpgradeable.sol": {
+			"keccak256": "0x2025ccf05f6f1f2fd4e078e552836f525a1864e3854ed555047cd732320ab29b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d27f4b23c2dee42394aebaf42bf238285230f472dfd3282a39c3f000ec28214f",
+				"dweb:/ipfs/QmQa3DnvccwdWJeWrjgXPnFMTWbzWQWR39hVqC7eEwo2PC"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/AddressUpgradeable.sol": {
+			"keccak256": "0x9c80f545915582e63fe206c6ce27cbe85a86fc10b9cd2a0e8c9488fb7c2ee422",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://310136ad60820af4177a11a61d77a3686faf5fca4942b600e08fc940db38396b",
+				"dweb:/ipfs/QmbCzMNSTL7Zi7M4UCSqBrkHtp4jjxUnGbkneCZKdR1qeq"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/ContextUpgradeable.sol": {
+			"keccak256": "0xdbef5f0c787055227243a7318ef74c8a5a1108ca3a07f2b3a00ef67769e1e397",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://08e39f23d5b4692f9a40803e53a8156b72b4c1f9902a88cd65ba964db103dab9",
+				"dweb:/ipfs/QmPKn6EYDgpga7KtpkA8wV2yJCYGMtc9K4LkJfhKX2RVSV"
+			]
+		},
+		"@openzeppelin/contracts-upgradeable/utils/StorageSlotUpgradeable.sol": {
+			"keccak256": "0x07ac95acad040f1fb1f6120dd0aa5f702db69446e95f82613721879d30de0908",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://a9df9de7b5da1d1bd3d4b6c073d0174bc4211db60e794a321c8cb5d4eae34685",
+				"dweb:/ipfs/QmWe49zj65jayrCe9jZpoWhYUZ1RiwSxyU2s7SBZnMztVy"
+			]
+		},
+		"@openzeppelin/contracts/interfaces/IERC1967.sol": {
+			"keccak256": "0xb25a4f11fa80c702bf5cd85adec90e6f6f507f32f4a8e6f5dbc31e8c10029486",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://6917f8a323e7811f041aecd4d9fd6e92455a6fba38a797ac6f6e208c7912b79d",
+				"dweb:/ipfs/QmShuYv55wYHGi4EFkDB8QfF7ZCHoKk2efyz3AWY1ExSq7"
+			]
+		},
+		"@openzeppelin/contracts/interfaces/draft-IERC1822.sol": {
+			"keccak256": "0xc42facb5094f2f35f066a7155bda23545e39a3156faef3ddc00185544443ba7d",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://d3b36282ab029b46bd082619a308a2ea11c309967b9425b7b7a6eb0b0c1c3196",
+				"dweb:/ipfs/QmP2YVfDB2FoREax3vJu7QhDnyYRMw52WPrCD4vdT2kuDA"
+			]
+		},
+		"@openzeppelin/contracts/proxy/ERC1967/ERC1967Proxy.sol": {
+			"keccak256": "0xa3066ff86b94128a9d3956a63a0511fa1aae41bd455772ab587b32ff322acb2e",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://bf7b192fd82acf6187970c80548f624b1b9c80425b62fa49e7fdb538a52de049",
+				"dweb:/ipfs/QmWXG1YCde1tqDYTbNwjkZDWVgPEjzaQGSDqWkyKLzaNua"
+			]
+		},
+		"@openzeppelin/contracts/proxy/ERC1967/ERC1967Utils.sol": {
+			"keccak256": "0x8decfa54cec979c824b044b8128cd91d713f72c71fd7dfa54974624d8c949898",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://271f914261a19d87117a777e0924ada545c16191ef9b00cc40b0134fc14ebc70",
+				"dweb:/ipfs/QmdvVNWHGHQrGGPonZJs5NuzTevTjZRM2zayKrDJf7WBA2"
+			]
+		},
+		"@openzeppelin/contracts/proxy/Proxy.sol": {
+			"keccak256": "0xc3f2ec76a3de8ed7a7007c46166f5550c72c7709e3fc7e8bb3111a7191cdedbd",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e73efb4c2ca655882dc237c6b4f234a9bd36d97159d8fcaa837eb01171f726ac",
+				"dweb:/ipfs/QmTNnnv7Gu5fs5G1ZMh7Fexp8N4XUs3XrNAngjcxgiss3e"
+			]
+		},
+		"@openzeppelin/contracts/proxy/beacon/IBeacon.sol": {
+			"keccak256": "0xc59a78b07b44b2cf2e8ab4175fca91e8eca1eee2df7357b8d2a8833e5ea1f64c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://5aa4f07e65444784c29cd7bfcc2341b34381e4e5b5da9f0c5bd00d7f430e66fa",
+				"dweb:/ipfs/QmWRMh4Q9DpaU9GvsiXmDdoNYMyyece9if7hnfLz7uqzWM"
+			]
+		},
+		"@openzeppelin/contracts/utils/Address.sol": {
+			"keccak256": "0xaaa1d17c1129b127a4a401db2fbd72960e2671474be3d08cae71ccdc42f7624c",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://cb2f27cd3952aa667e198fba0d9b7bcec52fbb12c16f013c25fe6fb52b29cc0e",
+				"dweb:/ipfs/QmeuohBFoeyDPZA9JNCTEDz3VBfBD4EABWuWXVhHAuEpKR"
+			]
+		},
+		"@openzeppelin/contracts/utils/Counters.sol": {
+			"keccak256": "0xf0018c2440fbe238dd3a8732fa8e17a0f9dce84d31451dc8a32f6d62b349c9f1",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://59e1c62884d55b70f3ae5432b44bb3166ad71ae3acd19c57ab6ddc3c87c325ee",
+				"dweb:/ipfs/QmezuXg5GK5oeA4F91EZhozBFekhq5TD966bHPH18cCqhu"
+			]
+		},
+		"@openzeppelin/contracts/utils/Errors.sol": {
+			"keccak256": "0x6afa713bfd42cf0f7656efa91201007ac465e42049d7de1d50753a373648c123",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://ba1d02f4847670a1b83dec9f7d37f0b0418d6043447b69f3a29a5f9efc547fcf",
+				"dweb:/ipfs/QmQ7iH2keLNUKgq2xSWcRmuBE5eZ3F5whYAkAGzCNNoEWB"
+			]
+		},
+		"@openzeppelin/contracts/utils/StorageSlot.sol": {
+			"keccak256": "0xcf74f855663ce2ae00ed8352666b7935f6cddea2932fdf2c3ecd30a9b1cd0e97",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9f660b1f351b757dfe01438e59888f31f33ded3afcf5cb5b0d9bf9aa6f320a8b",
+				"dweb:/ipfs/QmarDJ5hZEgBtCmmrVzEZWjub9769eD686jmzb2XpSU1cM"
+			]
+		},
+		"interfaces/ICrossChainBridge.sol": {
+			"keccak256": "0xdb0e53d2b200422045dd3fc3639b09a861096c5b53ded5697d16474574cd974a",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://26e70eb07119b9b8465021a14d3944a54d7be599eecee8af34dbd16f90cc95cb",
+				"dweb:/ipfs/QmavwDEWQyZyjmNw3NhLn2hVLETazeo9bauptnzy9krFD2"
+			]
+		},
+		"interfaces/IGovernanceActionTracker.sol": {
+			"keccak256": "0x820ae09ad38b426f7bf481aaa2ced08220a0365860774d5a742caac62b67596b",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://4212d9e942c041e4ef713a98363ced2736baa67032f5270d26239f5e0645a491",
+				"dweb:/ipfs/QmfWNDafrLQ73Di4hBb6dXE9kiTud6dwoBp3mFZJeQ71YX"
+			]
+		},
+		"interfaces/IUnifiedRewardsTracking.sol": {
+			"keccak256": "0xeab227b30da35a95665fb353c9d49d81bf53928f13105e83da50ac473c6e8e72",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://fd049a7cd8d431627ced8630acd12f39f11edc2355555915488400e5e072af7e",
+				"dweb:/ipfs/QmRgxFrp824qSZ29dYJZMWdFqc4e71SKfZnuQkZ1mDyCnk"
+			]
+		},
+		"rewards-tracking-contract.sol": {
+			"keccak256": "0xe01ba4cf4e16d4fc968880572d59a2b3663e78f72be732f4590973ef53791b97",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://e30492ded79504e3b7df18a4bb0b1aabbb915fa9c779b235a55c34bc6ca0e48d",
+				"dweb:/ipfs/QmREwnRS8QE6kaDXg5sN4HVkTtxyCeY3FeMByACEqzLYY7"
+			]
+		}
+	},
+	"version": 1
+}

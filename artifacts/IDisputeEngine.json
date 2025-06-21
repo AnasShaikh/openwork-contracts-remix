@@ -1,0 +1,428 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"checkDisputeParticipation(uint256,address)": "5a274dfa",
+			"claimDisputedAmount(uint256)": "c4fceb02",
+			"createDispute(uint256,string,string)": "7100dc62",
+			"escalateDispute(uint256)": "20a68d25",
+			"getDisputeDetails(uint256)": "ea89735d",
+			"getDisputeStatus(uint256)": "20f7aa3f",
+			"getDisputeVotes(uint256)": "c4736092",
+			"raiseDispute(uint256,string,string,uint256)": "340cadcd",
+			"resolveDispute(uint256,address)": "0e33599d",
+			"submitEvidence(uint256,string)": "a6a7f0eb",
+			"voteOnDispute(uint256,bool,string)": "e88b9d64"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "voter",
+					"type": "address"
+				}
+			],
+			"name": "checkDisputeParticipation",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "isInitiator",
+					"type": "bool"
+				},
+				{
+					"internalType": "bool",
+					"name": "isRespondent",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				}
+			],
+			"name": "claimDisputedAmount",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "amount",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "jobId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "reason",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				}
+			],
+			"name": "createDispute",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				}
+			],
+			"name": "escalateDispute",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				}
+			],
+			"name": "getDisputeDetails",
+			"outputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint256",
+							"name": "id",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "jobId",
+							"type": "uint256"
+						},
+						{
+							"internalType": "address",
+							"name": "initiator",
+							"type": "address"
+						},
+						{
+							"internalType": "address",
+							"name": "respondent",
+							"type": "address"
+						},
+						{
+							"internalType": "string",
+							"name": "reason",
+							"type": "string"
+						},
+						{
+							"internalType": "enum DisputeStorage.DisputeStatus",
+							"name": "status",
+							"type": "uint8"
+						},
+						{
+							"internalType": "bool",
+							"name": "resultDetermined",
+							"type": "bool"
+						},
+						{
+							"internalType": "bool",
+							"name": "fundsReleased",
+							"type": "bool"
+						},
+						{
+							"internalType": "address",
+							"name": "recipient",
+							"type": "address"
+						},
+						{
+							"internalType": "uint256",
+							"name": "lockedAmount",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "createdAt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "uint256",
+							"name": "resolvedAt",
+							"type": "uint256"
+						},
+						{
+							"internalType": "string",
+							"name": "evidence",
+							"type": "string"
+						},
+						{
+							"internalType": "string",
+							"name": "assignedOracle",
+							"type": "string"
+						},
+						{
+							"internalType": "uint256",
+							"name": "requiredVotes",
+							"type": "uint256"
+						},
+						{
+							"internalType": "bool",
+							"name": "oracleValidated",
+							"type": "bool"
+						}
+					],
+					"internalType": "struct DisputeStorage.Dispute",
+					"name": "dispute",
+					"type": "tuple"
+				},
+				{
+					"internalType": "uint256",
+					"name": "votesFor",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "votesAgainst",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				}
+			],
+			"name": "getDisputeStatus",
+			"outputs": [
+				{
+					"internalType": "enum DisputeStorage.DisputeStatus",
+					"name": "status",
+					"type": "uint8"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				}
+			],
+			"name": "getDisputeVotes",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "votesFor",
+					"type": "uint256"
+				},
+				{
+					"internalType": "uint256",
+					"name": "votesAgainst",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "view",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "jobId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "disputeHash",
+					"type": "string"
+				},
+				{
+					"internalType": "string",
+					"name": "oracleName",
+					"type": "string"
+				},
+				{
+					"internalType": "uint256",
+					"name": "fee",
+					"type": "uint256"
+				}
+			],
+			"name": "raiseDispute",
+			"outputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				}
+			],
+			"stateMutability": "payable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "address",
+					"name": "recipient",
+					"type": "address"
+				}
+			],
+			"name": "resolveDispute",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "string",
+					"name": "evidenceHash",
+					"type": "string"
+				}
+			],
+			"name": "submitEvidence",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		},
+		{
+			"inputs": [
+				{
+					"internalType": "uint256",
+					"name": "disputeId",
+					"type": "uint256"
+				},
+				{
+					"internalType": "bool",
+					"name": "inFavor",
+					"type": "bool"
+				},
+				{
+					"internalType": "string",
+					"name": "reasonHash",
+					"type": "string"
+				}
+			],
+			"name": "voteOnDispute",
+			"outputs": [
+				{
+					"internalType": "bool",
+					"name": "success",
+					"type": "bool"
+				}
+			],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

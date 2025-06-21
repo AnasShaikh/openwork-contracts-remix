@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"IAthenaInterfaces.sol": "QuestionStorage"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 300
+		},
+		"remappings": []
+	},
+	"sources": {
+		"IAthenaInterfaces.sol": {
+			"keccak256": "0x8bb3e9a16c39a08419b72b16001384172d05b9f33f1a4bc92307c710023d904f",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://892308df85a8b84d636d93930ffb3f3ec1763dcb912c26c2b358376e9e1d7b3a",
+				"dweb:/ipfs/Qmf8Jtpm1w63BGaLPHa7LE1Lxhd1ksLZAKis5JYBcYeH9H"
+			]
+		}
+	},
+	"version": 1
+}

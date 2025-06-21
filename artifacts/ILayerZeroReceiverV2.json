@@ -1,0 +1,102 @@
+{
+	"deploy": {
+		"VM:-": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"main:1": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"ropsten:3": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"rinkeby:4": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"kovan:42": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"goerli:5": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		},
+		"Custom": {
+			"linkReferences": {},
+			"autoDeployLib": true
+		}
+	},
+	"data": {
+		"bytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"deployedBytecode": {
+			"functionDebugData": {},
+			"generatedSources": [],
+			"immutableReferences": {},
+			"linkReferences": {},
+			"object": "",
+			"opcodes": "",
+			"sourceMap": ""
+		},
+		"gasEstimates": null,
+		"methodIdentifiers": {
+			"lzReceive((uint32,bytes32),bytes32,bytes,address,bytes)": "cb454d19"
+		}
+	},
+	"abi": [
+		{
+			"inputs": [
+				{
+					"components": [
+						{
+							"internalType": "uint32",
+							"name": "srcChainId",
+							"type": "uint32"
+						},
+						{
+							"internalType": "bytes32",
+							"name": "sender",
+							"type": "bytes32"
+						}
+					],
+					"internalType": "struct Origin",
+					"name": "origin",
+					"type": "tuple"
+				},
+				{
+					"internalType": "bytes32",
+					"name": "guid",
+					"type": "bytes32"
+				},
+				{
+					"internalType": "bytes",
+					"name": "payload",
+					"type": "bytes"
+				},
+				{
+					"internalType": "address",
+					"name": "executor",
+					"type": "address"
+				},
+				{
+					"internalType": "bytes",
+					"name": "extraData",
+					"type": "bytes"
+				}
+			],
+			"name": "lzReceive",
+			"outputs": [],
+			"stateMutability": "nonpayable",
+			"type": "function"
+		}
+	]
+}

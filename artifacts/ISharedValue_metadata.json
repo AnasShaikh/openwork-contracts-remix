@@ -1,0 +1,59 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "newValue",
+						"type": "uint256"
+					}
+				],
+				"name": "updateValue",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"test2.sol": "ISharedValue"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 300
+		},
+		"remappings": []
+	},
+	"sources": {
+		"test2.sol": {
+			"keccak256": "0xf07798321d48cf20364adf82ff766fa5d5908edb3e3486c0d6ec6c772ebf4145",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://82797f97f7d1388775abf0fc22157595f41ebc934ae04431dc1b3c5d22a96fc8",
+				"dweb:/ipfs/QmRqzHkH1MHXHdTZmnaFRndQAprpUiK3g61X7ryTtknaFV"
+			]
+		}
+	},
+	"version": 1
+}
