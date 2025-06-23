@@ -16,6 +16,11 @@
 						"internalType": "address",
 						"name": "_owner",
 						"type": "address"
+					},
+					{
+						"internalType": "address",
+						"name": "_usdToken",
+						"type": "address"
 					}
 				],
 				"stateMutability": "nonpayable",
@@ -124,6 +129,25 @@
 					{
 						"indexed": true,
 						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "FeesWithdrawn",
+				"type": "event"
+			},
+			{
+				"anonymous": false,
+				"inputs": [
+					{
+						"indexed": true,
+						"internalType": "address",
 						"name": "previousOwner",
 						"type": "address"
 					},
@@ -176,6 +200,12 @@
 						"internalType": "string",
 						"name": "name",
 						"type": "string"
+					},
+					{
+						"indexed": false,
+						"internalType": "uint256",
+						"name": "usdtFee",
+						"type": "uint256"
 					}
 				],
 				"name": "UserProfileSent",
@@ -238,6 +268,11 @@
 						"internalType": "string",
 						"name": "profileHash",
 						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "usdtFee",
+						"type": "uint256"
 					},
 					{
 						"internalType": "bytes",
@@ -536,12 +571,43 @@
 				"type": "function"
 			},
 			{
+				"inputs": [],
+				"name": "usdToken",
+				"outputs": [
+					{
+						"internalType": "contract IERC20",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "to",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "amount",
+						"type": "uint256"
+					}
+				],
+				"name": "withdrawFees",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
 				"stateMutability": "payable",
 				"type": "receive"
 			}
 		],
 		"devdoc": {
-			"details": "LayerZero V2 OApp for managing local chain operations and cross-chain profile creation",
+			"details": "LayerZero V2 OApp that lets **each caller decide the USDT fee** they deposit with the      profile-creation message.  The fee is passed as a parameter, pulled via `transferFrom`,      and retained in this contract.",
 			"errors": {
 				"OwnableInvalidOwner(address)": [
 					{
@@ -570,8 +636,15 @@
 						"_0": "Whether the path has been initialized."
 					}
 				},
-				"createUserProfile(uint32,string,string[],string,bytes)": {
-					"details": "Create a user profile - sends a cross-chain message to the User Registry"
+				"createUserProfile(uint32,string,string[],string,uint256,bytes)": {
+					"params": {
+						"_dstEid": "LayerZero destination chain ID",
+						"_options": "LayerZero options (e.g., gas limits); pass empty bytes if unsure",
+						"name": "User name",
+						"profileHash": "IPFS / Arweave hash",
+						"skills": "Array of skills",
+						"usdtFee": "Amount of USDT caller wants to deposit (6-dec units)"
+					}
 				},
 				"isComposeMsgSender((uint32,bytes32,uint64),bytes,address)": {
 					"details": "_origin The origin information containing the source endpoint and sender address.  - srcEid: The source chain endpoint ID.  - sender: The sender address on the src chain.  - nonce: The nonce of the message._message The lzReceive payload.Applications can optionally choose to implement separate composeMsg senders that are NOT the bridging layer.The default sender IS the OAppReceiver implementer.",
@@ -606,9 +679,6 @@
 				},
 				"owner()": {
 					"details": "Returns the address of the current owner."
-				},
-				"quoteCreateUserProfile(uint32,string,string[],string,bytes)": {
-					"details": "Quote the fee for creating a user profile cross-chain"
 				},
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
@@ -666,7 +736,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"bridge samples/LocalOpenworkSender.sol": "LocalOpenWorkV2"
+			"bridge samples/profile-with-fee.sol": "LocalOpenWorkV2"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -675,7 +745,7 @@
 		},
 		"optimizer": {
 			"enabled": true,
-			"runs": 300
+			"runs": 200
 		},
 		"remappings": []
 	},
@@ -848,12 +918,12 @@
 				"dweb:/ipfs/QmfDRc7pxfaXB2Dh9np5Uf29Na3pQ7tafRS684wd3GLjVL"
 			]
 		},
-		"bridge samples/LocalOpenworkSender.sol": {
-			"keccak256": "0x46baa8f160fbca4a4e4b1e960e13caf29b9f4b305e834f2c854c3faa3734e4ad",
+		"bridge samples/profile-with-fee.sol": {
+			"keccak256": "0x6b9a01b2f50f990cf4a0ed2a9f7f260e9fba78beda57dc86680740bab84b841d",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://47affee8d28bf10794d9130e32dadd627ffe711c903722bbb2cb54d9ca7b7e9a",
-				"dweb:/ipfs/QmeDKdpVh78nYbaHe1UCKRT5kePiuwuBGF2mF2XqR4RkQ2"
+				"bzz-raw://7d98345627eb8bb8a80c8687463c11bed62b37ce91b862f132e20bc9e7e71433",
+				"dweb:/ipfs/QmVk6Uo2vjSqtaWuR9XyviMNmpEUiMCio6rvPC3X7efJML"
 			]
 		}
 	},

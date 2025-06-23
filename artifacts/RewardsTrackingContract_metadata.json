@@ -1,6 +1,6 @@
 {
 	"compiler": {
-		"version": "0.8.30+commit.73712a01"
+		"version": "0.8.28+commit.7893614a"
 	},
 	"language": "Solidity",
 	"output": {
@@ -9,86 +9,12 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "_endpoint",
-						"type": "address"
-					},
-					{
-						"internalType": "address",
 						"name": "_owner",
 						"type": "address"
-					},
-					{
-						"internalType": "uint32",
-						"name": "_daoChainEid",
-						"type": "uint32"
 					}
 				],
 				"stateMutability": "nonpayable",
 				"type": "constructor"
-			},
-			{
-				"inputs": [],
-				"name": "InvalidDelegate",
-				"type": "error"
-			},
-			{
-				"inputs": [],
-				"name": "InvalidEndpointCall",
-				"type": "error"
-			},
-			{
-				"inputs": [],
-				"name": "LzTokenUnavailable",
-				"type": "error"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint32",
-						"name": "eid",
-						"type": "uint32"
-					}
-				],
-				"name": "NoPeer",
-				"type": "error"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint256",
-						"name": "msgValue",
-						"type": "uint256"
-					}
-				],
-				"name": "NotEnoughNative",
-				"type": "error"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "addr",
-						"type": "address"
-					}
-				],
-				"name": "OnlyEndpoint",
-				"type": "error"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint32",
-						"name": "eid",
-						"type": "uint32"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "sender",
-						"type": "bytes32"
-					}
-				],
-				"name": "OnlyPeer",
-				"type": "error"
 			},
 			{
 				"inputs": [
@@ -113,42 +39,6 @@
 				"type": "error"
 			},
 			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "token",
-						"type": "address"
-					}
-				],
-				"name": "SafeERC20FailedOperation",
-				"type": "error"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": true,
-						"internalType": "address",
-						"name": "earner",
-						"type": "address"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "balance",
-						"type": "uint256"
-					},
-					{
-						"indexed": false,
-						"internalType": "uint256",
-						"name": "governanceActions",
-						"type": "uint256"
-					}
-				],
-				"name": "EarnerUpdateSent",
-				"type": "event"
-			},
-			{
 				"anonymous": false,
 				"inputs": [
 					{
@@ -165,25 +55,6 @@
 					}
 				],
 				"name": "OwnershipTransferred",
-				"type": "event"
-			},
-			{
-				"anonymous": false,
-				"inputs": [
-					{
-						"indexed": false,
-						"internalType": "uint32",
-						"name": "eid",
-						"type": "uint32"
-					},
-					{
-						"indexed": false,
-						"internalType": "bytes32",
-						"name": "peer",
-						"type": "bytes32"
-					}
-				],
-				"name": "PeerSet",
 				"type": "event"
 			},
 			{
@@ -263,42 +134,6 @@
 			{
 				"inputs": [
 					{
-						"components": [
-							{
-								"internalType": "uint32",
-								"name": "srcEid",
-								"type": "uint32"
-							},
-							{
-								"internalType": "bytes32",
-								"name": "sender",
-								"type": "bytes32"
-							},
-							{
-								"internalType": "uint64",
-								"name": "nonce",
-								"type": "uint64"
-							}
-						],
-						"internalType": "struct Origin",
-						"name": "origin",
-						"type": "tuple"
-					}
-				],
-				"name": "allowInitializePath",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
 						"internalType": "address",
 						"name": "user",
 						"type": "address"
@@ -339,32 +174,6 @@
 						"internalType": "uint256",
 						"name": "",
 						"type": "uint256"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "daoChainEid",
-				"outputs": [
-					{
-						"internalType": "uint32",
-						"name": "",
-						"type": "uint32"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "endpoint",
-				"outputs": [
-					{
-						"internalType": "contract ILayerZeroEndpointV2",
-						"name": "",
-						"type": "address"
 					}
 				],
 				"stateMutability": "view",
@@ -489,52 +298,6 @@
 				"type": "function"
 			},
 			{
-				"inputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint32",
-								"name": "srcEid",
-								"type": "uint32"
-							},
-							{
-								"internalType": "bytes32",
-								"name": "sender",
-								"type": "bytes32"
-							},
-							{
-								"internalType": "uint64",
-								"name": "nonce",
-								"type": "uint64"
-							}
-						],
-						"internalType": "struct Origin",
-						"name": "",
-						"type": "tuple"
-					},
-					{
-						"internalType": "bytes",
-						"name": "",
-						"type": "bytes"
-					},
-					{
-						"internalType": "address",
-						"name": "_sender",
-						"type": "address"
-					}
-				],
-				"name": "isComposeMsgSender",
-				"outputs": [
-					{
-						"internalType": "bool",
-						"name": "",
-						"type": "bool"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
 				"inputs": [],
 				"name": "jobContract",
 				"outputs": [
@@ -587,167 +350,12 @@
 			},
 			{
 				"inputs": [],
-				"name": "lzOptions",
-				"outputs": [
-					{
-						"internalType": "bytes",
-						"name": "",
-						"type": "bytes"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint32",
-								"name": "srcEid",
-								"type": "uint32"
-							},
-							{
-								"internalType": "bytes32",
-								"name": "sender",
-								"type": "bytes32"
-							},
-							{
-								"internalType": "uint64",
-								"name": "nonce",
-								"type": "uint64"
-							}
-						],
-						"internalType": "struct Origin",
-						"name": "_origin",
-						"type": "tuple"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "_guid",
-						"type": "bytes32"
-					},
-					{
-						"internalType": "bytes",
-						"name": "_message",
-						"type": "bytes"
-					},
-					{
-						"internalType": "address",
-						"name": "_executor",
-						"type": "address"
-					},
-					{
-						"internalType": "bytes",
-						"name": "_extraData",
-						"type": "bytes"
-					}
-				],
-				"name": "lzReceive",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint32",
-						"name": "",
-						"type": "uint32"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "",
-						"type": "bytes32"
-					}
-				],
-				"name": "nextNonce",
-				"outputs": [
-					{
-						"internalType": "uint64",
-						"name": "nonce",
-						"type": "uint64"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [],
-				"name": "oAppVersion",
-				"outputs": [
-					{
-						"internalType": "uint64",
-						"name": "senderVersion",
-						"type": "uint64"
-					},
-					{
-						"internalType": "uint64",
-						"name": "receiverVersion",
-						"type": "uint64"
-					}
-				],
-				"stateMutability": "pure",
-				"type": "function"
-			},
-			{
-				"inputs": [],
 				"name": "owner",
 				"outputs": [
 					{
 						"internalType": "address",
 						"name": "",
 						"type": "address"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint32",
-						"name": "eid",
-						"type": "uint32"
-					}
-				],
-				"name": "peers",
-				"outputs": [
-					{
-						"internalType": "bytes32",
-						"name": "peer",
-						"type": "bytes32"
-					}
-				],
-				"stateMutability": "view",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "earner",
-						"type": "address"
-					}
-				],
-				"name": "quoteSendEarnerUpdate",
-				"outputs": [
-					{
-						"components": [
-							{
-								"internalType": "uint256",
-								"name": "nativeFee",
-								"type": "uint256"
-							},
-							{
-								"internalType": "uint256",
-								"name": "lzTokenFee",
-								"type": "uint256"
-							}
-						],
-						"internalType": "struct MessagingFee",
-						"name": "",
-						"type": "tuple"
 					}
 				],
 				"stateMutability": "view",
@@ -793,81 +401,11 @@
 				"inputs": [
 					{
 						"internalType": "address",
-						"name": "earner",
-						"type": "address"
-					}
-				],
-				"name": "sendEarnerUpdate",
-				"outputs": [],
-				"stateMutability": "payable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint32",
-						"name": "_daoChainEid",
-						"type": "uint32"
-					}
-				],
-				"name": "setDaoChainEid",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
-						"name": "_delegate",
-						"type": "address"
-					}
-				],
-				"name": "setDelegate",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "address",
 						"name": "_jobContract",
 						"type": "address"
 					}
 				],
 				"name": "setJobContract",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "bytes",
-						"name": "_options",
-						"type": "bytes"
-					}
-				],
-				"name": "setLzOptions",
-				"outputs": [],
-				"stateMutability": "nonpayable",
-				"type": "function"
-			},
-			{
-				"inputs": [
-					{
-						"internalType": "uint32",
-						"name": "_eid",
-						"type": "uint32"
-					},
-					{
-						"internalType": "bytes32",
-						"name": "_peer",
-						"type": "bytes32"
-					}
-				],
-				"name": "setPeer",
 				"outputs": [],
 				"stateMutability": "nonpayable",
 				"type": "function"
@@ -900,7 +438,7 @@
 				],
 				"name": "updateRewards",
 				"outputs": [],
-				"stateMutability": "payable",
+				"stateMutability": "nonpayable",
 				"type": "function"
 			},
 			{
@@ -976,10 +514,6 @@
 				],
 				"stateMutability": "view",
 				"type": "function"
-			},
-			{
-				"stateMutability": "payable",
-				"type": "receive"
 			}
 		],
 		"devdoc": {
@@ -993,73 +527,15 @@
 					{
 						"details": "The caller account is not authorized to perform an operation."
 					}
-				],
-				"SafeERC20FailedOperation(address)": [
-					{
-						"details": "An operation with an ERC-20 token failed."
-					}
 				]
 			},
 			"kind": "dev",
 			"methods": {
-				"allowInitializePath((uint32,bytes32,uint64))": {
-					"details": "This indicates to the endpoint that the OApp has enabled msgs for this particular path to be received.This defaults to assuming if a peer has been set, its initialized. Can be overridden by the OApp if there is other logic to determine this.",
-					"params": {
-						"origin": "The origin information containing the source endpoint and sender address."
-					},
-					"returns": {
-						"_0": "Whether the path has been initialized."
-					}
-				},
-				"isComposeMsgSender((uint32,bytes32,uint64),bytes,address)": {
-					"details": "_origin The origin information containing the source endpoint and sender address.  - srcEid: The source chain endpoint ID.  - sender: The sender address on the src chain.  - nonce: The nonce of the message._message The lzReceive payload.Applications can optionally choose to implement separate composeMsg senders that are NOT the bridging layer.The default sender IS the OAppReceiver implementer.",
-					"params": {
-						"_sender": "The sender address."
-					},
-					"returns": {
-						"_0": "isSender Is a valid sender."
-					}
-				},
-				"lzReceive((uint32,bytes32,uint64),bytes32,bytes,address,bytes)": {
-					"details": "Entry point for receiving messages or packets from the endpoint.Entry point for receiving msg/packet from the LayerZero endpoint.",
-					"params": {
-						"_executor": "The address of the executor for the received message.",
-						"_extraData": "Additional arbitrary data provided by the corresponding executor.",
-						"_guid": "The unique identifier for the received LayerZero message.",
-						"_message": "The payload of the received message.",
-						"_origin": "The origin information containing the source endpoint and sender address.  - srcEid: The source chain endpoint ID.  - sender: The sender address on the src chain.  - nonce: The nonce of the message."
-					}
-				},
-				"nextNonce(uint32,bytes32)": {
-					"details": "_srcEid The source endpoint ID._sender The sender address.The path nonce starts from 1. If 0 is returned it means that there is NO nonce ordered enforcement.Is required by the off-chain executor to determine the OApp expects msg execution is ordered.This is also enforced by the OApp.By default this is NOT enabled. ie. nextNonce is hardcoded to return 0.",
-					"returns": {
-						"nonce": "The next nonce."
-					}
-				},
-				"oAppVersion()": {
-					"returns": {
-						"receiverVersion": "The version of the OAppReceiver.sol implementation.",
-						"senderVersion": "The version of the OAppSender.sol implementation."
-					}
-				},
 				"owner()": {
 					"details": "Returns the address of the current owner."
 				},
 				"renounceOwnership()": {
 					"details": "Leaves the contract without owner. It will not be possible to call `onlyOwner` functions. Can only be called by the current owner. NOTE: Renouncing ownership will leave the contract without an owner, thereby disabling any functionality that is only available to the owner."
-				},
-				"setDelegate(address)": {
-					"details": "Only the owner/admin of the OApp can call this function.Provides the ability for a delegate to set configs, on behalf of the OApp, directly on the Endpoint contract.",
-					"params": {
-						"_delegate": "The address of the delegate to be set."
-					}
-				},
-				"setPeer(uint32,bytes32)": {
-					"details": "Only the owner/admin of the OApp can call this function.Indicates that the peer is trusted to send LayerZero messages to this OApp.Set this to bytes32(0) to remove the peer address.Peer is a bytes32 to accommodate non-evm chains.",
-					"params": {
-						"_eid": "The endpoint ID.",
-						"_peer": "The address of the peer to be associated with the corresponding endpoint."
-					}
 				},
 				"transferOwnership(address)": {
 					"details": "Transfers ownership of the contract to a new account (`newOwner`). Can only be called by the current owner."
@@ -1069,32 +545,7 @@
 		},
 		"userdoc": {
 			"kind": "user",
-			"methods": {
-				"allowInitializePath((uint32,bytes32,uint64))": {
-					"notice": "Checks if the path initialization is allowed based on the provided origin."
-				},
-				"endpoint()": {
-					"notice": "Retrieves the LayerZero endpoint associated with the OApp."
-				},
-				"isComposeMsgSender((uint32,bytes32,uint64),bytes,address)": {
-					"notice": "Indicates whether an address is an approved composeMsg sender to the Endpoint."
-				},
-				"nextNonce(uint32,bytes32)": {
-					"notice": "Retrieves the next nonce for a given source endpoint and sender address."
-				},
-				"oAppVersion()": {
-					"notice": "Retrieves the OApp version information."
-				},
-				"peers(uint32)": {
-					"notice": "Retrieves the peer (OApp) associated with a corresponding endpoint."
-				},
-				"setDelegate(address)": {
-					"notice": "Sets the delegate address for the OApp."
-				},
-				"setPeer(uint32,bytes32)": {
-					"notice": "Sets the peer address (OApp instance) for a corresponding endpoint."
-				}
-			},
+			"methods": {},
 			"version": 1
 		}
 	},
@@ -1108,7 +559,7 @@
 			"bytecodeHash": "ipfs"
 		},
 		"optimizer": {
-			"enabled": false,
+			"enabled": true,
 			"runs": 200
 		},
 		"remappings": []
@@ -1283,11 +734,11 @@
 			]
 		},
 		"rewards-tracking-contract.sol": {
-			"keccak256": "0x7846b431c5b5fcf215ce4a353415d4ab7957093b4d145e230a042c2f6d7afc62",
+			"keccak256": "0x5353e94c349c352697cd03f94863b80deaf06fbfd78be5ba78cce3cb40c80314",
 			"license": "MIT",
 			"urls": [
-				"bzz-raw://706060b88f3165958f8cea788f2baacb0fe3fffc03dba9625a67dfc76ae210d4",
-				"dweb:/ipfs/QmS8dLK3o2814R5189fEB7WtjWSzUz1Mcykk5ubH5CkTdF"
+				"bzz-raw://8d03f8f0236ea853b17453156aba0067bee2d4f75ecdb81812e889315c476a16",
+				"dweb:/ipfs/QmaPkGfZJJdXMNxdeUbUNWNQgtYVAGARdqPyBRV27QSFw4"
 			]
 		}
 	},

@@ -72,7 +72,7 @@
 	},
 	"settings": {
 		"compilationTarget": {
-			"openwork-dao.sol": "IERC20"
+			"main-openwork-dao-before-bridge.sol": "IERC20"
 		},
 		"evmVersion": "paris",
 		"libraries": {},
@@ -310,7 +310,7 @@
 				"dweb:/ipfs/QmUkE8g5xPExWoSAKwdi5ww1qJJVtEWtjSF93G2LMQkgD3"
 			]
 		},
-		"openwork-dao.sol": {
+		"main-openwork-dao-before-bridge.sol": {
 			"keccak256": "0x8ef83e025751a841ecff90b082fbf932e694d9d6911157620daaf35ae06b4969",
 			"license": "MIT",
 			"urls": [

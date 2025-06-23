@@ -1,8 +1,6 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.22;
 
-import { OApp, MessagingFee, Origin } from "@layerzerolabs/oapp-evm/contracts/oapp/OApp.sol";
-import { MessagingReceipt } from "@layerzerolabs/oapp-evm/contracts/oapp/OAppSender.sol";
 import { Ownable } from "@openzeppelin/contracts/access/Ownable.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
@@ -12,7 +10,7 @@ interface IRewardsTrackingContract {
     function updateRewards(uint256 jobId, uint256 paidAmountUSDT) external;
 }
 
-contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
+contract LocalOpenWorkJobContract is Ownable, ReentrancyGuard {
     using SafeERC20 for IERC20;
     
     struct Profile {
@@ -64,9 +62,8 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
     mapping(address => uint256[]) public userRatings;
     uint256 public jobCounter;
     
-    // Cross-chain and USDT specific
+    // USDT specific
     IERC20 public immutable usdtToken;
-    uint32 public nojcEndpointId; // Endpoint ID for NOJC chain
     IRewardsTrackingContract public rewardsContract;
     
     // Events
@@ -80,33 +77,24 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
     event UserRated(uint256 indexed jobId, address indexed rater, address indexed rated, uint256 rating);
     event PortfolioAdded(address indexed user, string portfolioHash);
     event USDTEscrowed(uint256 indexed jobId, address indexed jobGiver, uint256 amount);
-    event CrossChainMessageSent(uint256 indexed jobId, string messageType, uint32 dstEid);
     
     constructor(
-        address _endpoint,
         address _owner,
-        address _usdtToken,
-        uint32 _nojcEndpointId
-    ) OApp(_endpoint, _owner) Ownable(_owner) {
+        address _usdtToken
+    ) Ownable(_owner) {
         usdtToken = IERC20(_usdtToken);
-        nojcEndpointId = _nojcEndpointId;
     }
     
     function setRewardsContract(address _rewardsContract) external onlyOwner {
         rewardsContract = IRewardsTrackingContract(_rewardsContract);
     }
     
-    function setNojcEndpointId(uint32 _nojcEndpointId) external onlyOwner {
-        nojcEndpointId = _nojcEndpointId;
-    }
-    
     // Profile Management
     function createProfile(
         string memory _ipfsHash, 
         address _referrerAddress, 
-        uint256 _rating,
-        bytes calldata _options
-    ) external payable nonReentrant {
+        uint256 _rating
+    ) external nonReentrant {
         require(!hasProfile[msg.sender], "Profile already exists");
         
         profiles[msg.sender] = Profile({
@@ -119,28 +107,7 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
         
         hasProfile[msg.sender] = true;
         
-        // Send cross-chain message to NOJC
-        bytes memory payload = abi.encode(
-            "CREATE_PROFILE",
-            msg.sender,
-            _ipfsHash,
-            _referrerAddress,
-            _rating
-        );
-        
-        MessagingFee memory fee = _quote(nojcEndpointId, payload, _options, false);
-        require(msg.value >= fee.nativeFee, "Insufficient fee for cross-chain message");
-        
-        _lzSend(
-            nojcEndpointId,
-            payload,
-            _options,
-            MessagingFee(msg.value, 0),
-            payable(msg.sender)
-        );
-        
         emit ProfileCreated(msg.sender, _ipfsHash, _referrerAddress);
-        emit CrossChainMessageSent(0, "CREATE_PROFILE", nojcEndpointId);
     }
     
     function getProfile(address _user) public view returns (Profile memory) {
@@ -151,9 +118,8 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
     // Job Management
     function postJob(
         string memory _jobDetailHash, 
-        MilestonePayment[] memory _milestonePayments,
-        bytes calldata _options
-    ) external payable nonReentrant {
+        MilestonePayment[] memory _milestonePayments
+    ) external nonReentrant {
         require(hasProfile[msg.sender], "Must have profile to post job");
         require(_milestonePayments.length > 0, "Must have at least one milestone");
         
@@ -184,29 +150,8 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
             newJob.milestonePayments.push(_milestonePayments[i]);
         }
         
-        // Send cross-chain message to NOJC
-        bytes memory payload = abi.encode(
-            "POST_JOB",
-            msg.sender,
-            _jobDetailHash,
-            _milestonePayments,
-            totalAmount
-        );
-        
-        MessagingFee memory fee = _quote(nojcEndpointId, payload, _options, false);
-        require(msg.value >= fee.nativeFee, "Insufficient fee for cross-chain message");
-        
-        _lzSend(
-            nojcEndpointId,
-            payload,
-            _options,
-            MessagingFee(msg.value, 0),
-            payable(msg.sender)
-        );
-        
         emit JobPosted(jobCounter, msg.sender, _jobDetailHash, totalAmount);
         emit USDTEscrowed(jobCounter, msg.sender, totalAmount);
-        emit CrossChainMessageSent(jobCounter, "POST_JOB", nojcEndpointId);
     }
     
     function getJob(uint256 _jobId) public view returns (Job memory) {
@@ -218,9 +163,8 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
     function applyToJob(
         uint256 _jobId, 
         string memory _applicationHash, 
-        MilestonePayment[] memory _proposedMilestones,
-        bytes calldata _options
-    ) external payable nonReentrant {
+        MilestonePayment[] memory _proposedMilestones
+    ) external nonReentrant {
         require(hasProfile[msg.sender], "Must have profile to apply");
         require(jobs[_jobId].id != 0, "Job does not exist");
         require(jobs[_jobId].isOpen, "Job is not open");
@@ -248,28 +192,7 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
             newApplication.proposedMilestones.push(_proposedMilestones[i]);
         }
         
-        // Send cross-chain message to NOJC
-        bytes memory payload = abi.encode(
-            "APPLY_TO_JOB",
-            msg.sender,
-            _jobId,
-            _applicationHash,
-            _proposedMilestones
-        );
-        
-        MessagingFee memory fee = _quote(nojcEndpointId, payload, _options, false);
-        require(msg.value >= fee.nativeFee, "Insufficient fee for cross-chain message");
-        
-        _lzSend(
-            nojcEndpointId,
-            payload,
-            _options,
-            MessagingFee(msg.value, 0),
-            payable(msg.sender)
-        );
-        
         emit JobApplication(_jobId, applicationId, msg.sender, _applicationHash);
-        emit CrossChainMessageSent(_jobId, "APPLY_TO_JOB", nojcEndpointId);
     }
     
     function getApplication(uint256 _jobId, uint256 _applicationId) public view returns (Application memory) {
@@ -280,9 +203,8 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
     // Job Execution
     function startJob(
         uint256 _applicationId, 
-        bool _useApplicantMilestones,
-        bytes calldata _options
-    ) external payable nonReentrant {
+        bool _useApplicantMilestones
+    ) external nonReentrant {
         // Get the application to find the job
         uint256 jobId = 0;
         for (uint256 i = 1; i <= jobCounter; i++) {
@@ -317,34 +239,13 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
             }
         }
         
-        // Send cross-chain message to NOJC
-        bytes memory payload = abi.encode(
-            "START_JOB",
-            msg.sender,
-            _applicationId,
-            _useApplicantMilestones
-        );
-        
-        MessagingFee memory fee = _quote(nojcEndpointId, payload, _options, false);
-        require(msg.value >= fee.nativeFee, "Insufficient fee for cross-chain message");
-        
-        _lzSend(
-            nojcEndpointId,
-            payload,
-            _options,
-            MessagingFee(msg.value, 0),
-            payable(msg.sender)
-        );
-        
         emit JobStarted(jobId, _applicationId, application.applicant, _useApplicantMilestones);
-        emit CrossChainMessageSent(jobId, "START_JOB", nojcEndpointId);
     }
     
     function submitWork(
         uint256 _jobId, 
-        string memory _submissionHash,
-        bytes calldata _options
-    ) external payable nonReentrant {
+        string memory _submissionHash
+    ) external nonReentrant {
         require(jobs[_jobId].id != 0, "Job does not exist");
         require(!jobs[_jobId].isOpen, "Job must be started");
         require(jobs[_jobId].selectedApplicant == msg.sender, "Only selected applicant can submit work");
@@ -352,34 +253,13 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
         
         jobs[_jobId].workSubmissions.push(_submissionHash);
         
-        // Send cross-chain message to NOJC
-        bytes memory payload = abi.encode(
-            "SUBMIT_WORK",
-            msg.sender,
-            _jobId,
-            _submissionHash
-        );
-        
-        MessagingFee memory fee = _quote(nojcEndpointId, payload, _options, false);
-        require(msg.value >= fee.nativeFee, "Insufficient fee for cross-chain message");
-        
-        _lzSend(
-            nojcEndpointId,
-            payload,
-            _options,
-            MessagingFee(msg.value, 0),
-            payable(msg.sender)
-        );
-        
         emit WorkSubmitted(_jobId, msg.sender, _submissionHash, jobs[_jobId].currentMilestone);
-        emit CrossChainMessageSent(_jobId, "SUBMIT_WORK", nojcEndpointId);
     }
     
     function releasePayment(
         uint256 _jobId, 
-        uint256 _amount,
-        bytes calldata _options
-    ) external payable nonReentrant {
+        uint256 _amount
+    ) external nonReentrant {
         require(jobs[_jobId].id != 0, "Job does not exist");
         require(jobs[_jobId].jobGiver == msg.sender, "Only job giver can release payment");
         require(!jobs[_jobId].isOpen, "Job must be started");
@@ -400,34 +280,13 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
             rewardsContract.updateRewards(_jobId, _amount);
         }
         
-        // Send cross-chain message to NOJC
-        bytes memory payload = abi.encode(
-            "RELEASE_PAYMENT",
-            msg.sender,
-            _jobId,
-            _amount
-        );
-        
-        MessagingFee memory fee = _quote(nojcEndpointId, payload, _options, false);
-        require(msg.value >= fee.nativeFee, "Insufficient fee for cross-chain message");
-        
-        _lzSend(
-            nojcEndpointId,
-            payload,
-            _options,
-            MessagingFee(msg.value, 0),
-            payable(msg.sender)
-        );
-        
         emit PaymentReleased(_jobId, msg.sender, jobs[_jobId].selectedApplicant, _amount, jobs[_jobId].currentMilestone);
-        emit CrossChainMessageSent(_jobId, "RELEASE_PAYMENT", nojcEndpointId);
     }
     
     function lockNextMilestone(
         uint256 _jobId, 
-        uint256 _lockedAmount,
-        bytes calldata _options
-    ) external payable nonReentrant {
+        uint256 _lockedAmount
+    ) external nonReentrant {
         require(jobs[_jobId].id != 0, "Job does not exist");
         require(!jobs[_jobId].isOpen, "Job must be started");
         require(jobs[_jobId].currentMilestone < jobs[_jobId].finalMilestones.length, "All milestones already completed");
@@ -436,36 +295,15 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
         jobs[_jobId].currentMilestone += 1;
         jobs[_jobId].currentLockedAmount = _lockedAmount;
         
-        // Send cross-chain message to NOJC
-        bytes memory payload = abi.encode(
-            "LOCK_NEXT_MILESTONE",
-            msg.sender,
-            _jobId,
-            _lockedAmount
-        );
-        
-        MessagingFee memory fee = _quote(nojcEndpointId, payload, _options, false);
-        require(msg.value >= fee.nativeFee, "Insufficient fee for cross-chain message");
-        
-        _lzSend(
-            nojcEndpointId,
-            payload,
-            _options,
-            MessagingFee(msg.value, 0),
-            payable(msg.sender)
-        );
-        
         emit MilestoneLocked(_jobId, jobs[_jobId].currentMilestone, _lockedAmount);
-        emit CrossChainMessageSent(_jobId, "LOCK_NEXT_MILESTONE", nojcEndpointId);
     }
     
     // Rating System
     function rate(
         uint256 _jobId, 
         address _userToRate, 
-        uint256 _rating,
-        bytes calldata _options
-    ) external payable nonReentrant {
+        uint256 _rating
+    ) external nonReentrant {
         require(jobs[_jobId].id != 0, "Job does not exist");
         require(!jobs[_jobId].isOpen, "Job must be started");
         require(_rating >= 1 && _rating <= 5, "Rating must be between 1 and 5");
@@ -487,28 +325,7 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
         jobRatings[_jobId][_userToRate] = _rating;
         userRatings[_userToRate].push(_rating);
         
-        // Send cross-chain message to NOJC
-        bytes memory payload = abi.encode(
-            "RATE_USER",
-            msg.sender,
-            _jobId,
-            _userToRate,
-            _rating
-        );
-        
-        MessagingFee memory fee = _quote(nojcEndpointId, payload, _options, false);
-        require(msg.value >= fee.nativeFee, "Insufficient fee for cross-chain message");
-        
-        _lzSend(
-            nojcEndpointId,
-            payload,
-            _options,
-            MessagingFee(msg.value, 0),
-            payable(msg.sender)
-        );
-        
         emit UserRated(_jobId, msg.sender, _userToRate, _rating);
-        emit CrossChainMessageSent(_jobId, "RATE_USER", nojcEndpointId);
     }
     
     function getRating(address _user) public view returns (uint256) {
@@ -527,82 +344,14 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
     
     // Portfolio Management
     function addPortfolio(
-        string memory _portfolioHash,
-        bytes calldata _options
-    ) external payable nonReentrant {
+        string memory _portfolioHash
+    ) external nonReentrant {
         require(hasProfile[msg.sender], "Profile does not exist");
         require(bytes(_portfolioHash).length > 0, "Portfolio hash cannot be empty");
         
         profiles[msg.sender].portfolioHashes.push(_portfolioHash);
         
-        // Send cross-chain message to NOJC
-        bytes memory payload = abi.encode(
-            "ADD_PORTFOLIO",
-            msg.sender,
-            _portfolioHash
-        );
-        
-        MessagingFee memory fee = _quote(nojcEndpointId, payload, _options, false);
-        require(msg.value >= fee.nativeFee, "Insufficient fee for cross-chain message");
-        
-        _lzSend(
-            nojcEndpointId,
-            payload,
-            _options,
-            MessagingFee(msg.value, 0),
-            payable(msg.sender)
-        );
-        
         emit PortfolioAdded(msg.sender, _portfolioHash);
-        emit CrossChainMessageSent(0, "ADD_PORTFOLIO", nojcEndpointId);
-    }
-    
-    // Quote functions for LayerZero fees
-    function quoteCreateProfile(
-        string memory _ipfsHash,
-        address _referrerAddress,
-        uint256 _rating,
-        bytes calldata _options
-    ) external view returns (MessagingFee memory) {
-        bytes memory payload = abi.encode(
-            "CREATE_PROFILE",
-            msg.sender,
-            _ipfsHash,
-            _referrerAddress,
-            _rating
-        );
-        return _quote(nojcEndpointId, payload, _options, false);
-    }
-    
-    function quotePostJob(
-        string memory _jobDetailHash,
-        MilestonePayment[] memory _milestonePayments,
-        bytes calldata _options
-    ) external view returns (MessagingFee memory) {
-        bytes memory payload = abi.encode(
-            "POST_JOB",
-            msg.sender,
-            _jobDetailHash,
-            _milestonePayments,
-            0 // placeholder for totalAmount
-        );
-        return _quote(nojcEndpointId, payload, _options, false);
-    }
-    
-    function quoteApplyToJob(
-        uint256 _jobId,
-        string memory _applicationHash,
-        MilestonePayment[] memory _proposedMilestones,
-        bytes calldata _options
-    ) external view returns (MessagingFee memory) {
-        bytes memory payload = abi.encode(
-            "APPLY_TO_JOB",
-            msg.sender,
-            _jobId,
-            _applicationHash,
-            _proposedMilestones
-        );
-        return _quote(nojcEndpointId, payload, _options, false);
     }
     
     // Emergency functions
@@ -637,19 +386,4 @@ contract LocalOpenWorkJobContract is OApp, ReentrancyGuard {
         released = jobs[_jobId].totalReleased;
         remaining = escrowed - released;
     }
-    
-   // LayerZero receive function (empty since we only send to NOJC)
-    function _lzReceive(
-        Origin calldata,
-        bytes32,
-        bytes calldata,
-        address,
-        bytes calldata
-    ) internal pure override {
-        // LOJC only sends messages to NOJC, doesn't receive any
-        revert("LOJC does not receive messages");
-    }
-    
-    // Allow contract to receive Ether for LayerZero fees
-    receive() external payable {}
 }

@@ -6,6 +6,7 @@ import { OApp, MessagingFee, Origin } from "@layerzerolabs/oapp-evm/contracts/oa
 import { MessagingReceipt } from "@layerzerolabs/oapp-evm/contracts/oapp/OAppSender.sol";
 import "@openzeppelin/contracts/security/ReentrancyGuard.sol";
 
+
 interface IJobContract {
     function getJob(uint256 jobId) external view returns (
         uint256 id,
@@ -30,18 +31,14 @@ interface IJobContract {
     );
 }
 
-contract RewardsTrackingContract is OApp, ReentrancyGuard {
+contract RewardsTrackingContract is Ownable {
     IJobContract public jobContract;
-    
-    // LayerZero configuration
-    uint32 public daoChainEid; // DAO contract endpoint ID
-    bytes public lzOptions; // LayerZero options for gas
     
     // Reward bands structure
     struct RewardBand {
-        uint256 minAmount;
-        uint256 maxAmount;
-        uint256 owPerDollar;
+        uint256 minAmount;      // Minimum cumulative amount for this band
+        uint256 maxAmount;      // Maximum cumulative amount for this band
+        uint256 owPerDollar;    // OW tokens per USDT (scaled by 1e18)
     }
     
     // User cumulative tracking
@@ -71,29 +68,9 @@ contract RewardsTrackingContract is OApp, ReentrancyGuard {
         uint256 newCumulativeEarnings,
         uint256 newTotalTokens
     );
-
-    // NEW EVENT: Cross-chain earner update sent
-    event EarnerUpdateSent(address indexed earner, uint256 balance, uint256 governanceActions);
     
-    constructor(
-        address _endpoint,
-        address _owner,
-        uint32 _daoChainEid
-    ) OApp(_endpoint, _owner) Ownable(_owner) {
-        daoChainEid = _daoChainEid;
-        // Set default LayerZero options (can be updated by owner)
-        lzOptions = hex"00030100110100000000000000000000000000030d40";
+    constructor(address _owner) Ownable(_owner) {
         _initializeRewardBands();
-    }
-    
-    // NEW: Set DAO chain endpoint ID
-    function setDaoChainEid(uint32 _daoChainEid) external onlyOwner {
-        daoChainEid = _daoChainEid;
-    }
-    
-    // NEW: Set LayerZero options
-    function setLzOptions(bytes calldata _options) external onlyOwner {
-        lzOptions = _options;
     }
     
     function setJobContract(address _jobContract) external onlyOwner {
@@ -124,8 +101,7 @@ contract RewardsTrackingContract is OApp, ReentrancyGuard {
         rewardBands.push(RewardBand(131072000 * 1e6, type(uint256).max, 19 * 1e16)); // $131.072M+: 0.19 OW per $
     }
     
-    // UPDATED: Modified updateRewards function to send cross-chain messages
-    function updateRewards(uint256 jobId, uint256 paidAmountUSDT) external payable nonReentrant {
+    function updateRewards(uint256 jobId, uint256 paidAmountUSDT) external {
         require(address(jobContract) != address(0), "Job contract not set");
         require(msg.sender == address(jobContract), "Only job contract can call this");
         require(paidAmountUSDT > 0, "Paid amount must be greater than 0");
@@ -168,82 +144,9 @@ contract RewardsTrackingContract is OApp, ReentrancyGuard {
         if (jobTakerReferrer != address(0) && jobTakerReferrer != selectedApplicant && jobTakerReferrer != jobGiverReferrer) {
             calculateAndUpdateTokens(jobTakerReferrer, paidAmountUSDT / 10); // 10% referral bonus
         }
-
-        // NEW: Send cross-chain updates to DAO contract
-        _sendEarnerUpdate(jobGiver, userTotalOWTokens[jobGiver]);
-        _sendEarnerUpdate(selectedApplicant, userTotalOWTokens[selectedApplicant]);
         
         emit RewardsUpdated(jobId, paidAmountUSDT, jobGiver, selectedApplicant, jobGiverTokens, jobTakerTokens);
     }
-    
-    // NEW: Internal function to send earner updates cross-chain
-    function _sendEarnerUpdate(address earner, uint256 balance) internal {
-        if (daoChainEid == 0) return; // Skip if DAO chain not configured
-        
-        // Simple governance action count (can be enhanced based on your logic)
-        uint256 governanceActions = balance > 0 ? 1 : 0;
-        
-        // Encode payload for DAO contract
-        bytes memory payload = abi.encode(earner, balance, governanceActions);
-        
-        // Calculate fee required
-        MessagingFee memory fee = _quote(daoChainEid, payload, lzOptions, false);
-        
-        // Send cross-chain message if enough ETH provided
-        if (address(this).balance >= fee.nativeFee) {
-            _lzSend(
-                daoChainEid,
-                payload,
-                lzOptions,
-                MessagingFee(fee.nativeFee, 0),
-                payable(owner())
-            );
-            
-            emit EarnerUpdateSent(earner, balance, governanceActions);
-        }
-    }
-    
-    // NEW: Manual function to send earner update (with fee payment)
-    function sendEarnerUpdate(address earner) external payable onlyOwner {
-        uint256 balance = userTotalOWTokens[earner];
-        uint256 governanceActions = balance > 0 ? 1 : 0;
-        
-        bytes memory payload = abi.encode(earner, balance, governanceActions);
-        MessagingFee memory fee = _quote(daoChainEid, payload, lzOptions, false);
-        require(msg.value >= fee.nativeFee, "Insufficient fee");
-        
-        _lzSend(
-            daoChainEid,
-            payload,
-            lzOptions,
-            MessagingFee(msg.value, 0),
-            payable(msg.sender)
-        );
-        
-        emit EarnerUpdateSent(earner, balance, governanceActions);
-    }
-    
-    // NEW: Quote fee for sending earner update
-    function quoteSendEarnerUpdate(address earner) external view returns (MessagingFee memory) {
-        uint256 balance = userTotalOWTokens[earner];
-        uint256 governanceActions = balance > 0 ? 1 : 0;
-        bytes memory payload = abi.encode(earner, balance, governanceActions);
-        return _quote(daoChainEid, payload, lzOptions, false);
-    }
-    
-    // NEW: LayerZero receive handler (currently empty as this contract only sends)
-    function _lzReceive(
-        Origin calldata,
-        bytes32,
-        bytes calldata,
-        address,
-        bytes calldata
-    ) internal override {}
-    
-    // NEW: Allow contract to receive ETH for LayerZero fees
-    receive() external payable {}
-    
-    // [Rest of the existing functions remain unchanged...]
     
     function calculateAndUpdateTokens(address user, uint256 amountUSDT) private returns (uint256) {
         uint256 currentCumulative = userCumulativeEarnings[user];

@@ -1,0 +1,411 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_daoContract",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string[]",
+						"name": "_names",
+						"type": "string[]"
+					},
+					{
+						"internalType": "address[][]",
+						"name": "_members",
+						"type": "address[][]"
+					},
+					{
+						"internalType": "string[]",
+						"name": "_shortDescriptions",
+						"type": "string[]"
+					},
+					{
+						"internalType": "string[]",
+						"name": "_hashOfDetails",
+						"type": "string[]"
+					},
+					{
+						"internalType": "uint256[]",
+						"name": "_stakeAmounts",
+						"type": "uint256[]"
+					},
+					{
+						"internalType": "address[][]",
+						"name": "_skillVerifiedAddresses",
+						"type": "address[][]"
+					}
+				],
+				"name": "addOrUpdateOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "applicationCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_applicationId",
+						"type": "uint256"
+					}
+				],
+				"name": "approveSkillVerification",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "daoContract",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "disputeCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "disputes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "disputedAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "hash",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "disputeRaiserAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votesFor",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votesAgainst",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "result",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isVotingActive",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timeStamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fees",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "minOracleMembers",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "oracles",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "shortDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "hashOfDetails",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "stakeAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_disputeHash",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_oracleName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_fee",
+						"type": "uint256"
+					}
+				],
+				"name": "raiseDispute",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_oracleName",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_memberToRemove",
+						"type": "address"
+					}
+				],
+				"name": "removeMemberFromOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string[]",
+						"name": "_oracleNames",
+						"type": "string[]"
+					}
+				],
+				"name": "removeOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "skillApplications",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "applicationHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "feeAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "targetOracleName",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "skillVerificationDates",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_applicationHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_feeAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_targetOracleName",
+						"type": "string"
+					}
+				],
+				"name": "submitSkillVerification",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_newMinMembers",
+						"type": "uint256"
+					}
+				],
+				"name": "updateMinOracleMembers",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"native-athena.sol": "SkillOracle"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"native-athena.sol": {
+			"keccak256": "0x1c12b7f13be8a0dff71878f53574a27a082bb7f22b92690df14825503a67aea0",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://2a04d66ca9c21ab7fafb0c707ca715859e5124bfed371445104af98c630bfd9d",
+				"dweb:/ipfs/QmVEGQ3GyFmhREjsbwfPUTyRyskzds1cVFRqiX7CaCWErD"
+			]
+		}
+	},
+	"version": 1
+}

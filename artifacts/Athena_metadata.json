@@ -1,0 +1,966 @@
+{
+	"compiler": {
+		"version": "0.8.28+commit.7893614a"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [
+			{
+				"inputs": [
+					{
+						"internalType": "address",
+						"name": "_daoContract",
+						"type": "address"
+					}
+				],
+				"stateMutability": "nonpayable",
+				"type": "constructor"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string[]",
+						"name": "_names",
+						"type": "string[]"
+					},
+					{
+						"internalType": "address[][]",
+						"name": "_members",
+						"type": "address[][]"
+					},
+					{
+						"internalType": "uint256[][]",
+						"name": "_memberStakes",
+						"type": "uint256[][]"
+					},
+					{
+						"internalType": "string[]",
+						"name": "_shortDescriptions",
+						"type": "string[]"
+					},
+					{
+						"internalType": "string[]",
+						"name": "_hashOfDetails",
+						"type": "string[]"
+					},
+					{
+						"internalType": "address[][]",
+						"name": "_skillVerifiedAddresses",
+						"type": "address[][]"
+					}
+				],
+				"name": "addOrUpdateOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "applicationCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_descriptionHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_feeAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_oracleName",
+						"type": "string"
+					}
+				],
+				"name": "askAthenaQuestion",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "athenaQuestionVotes",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "choice",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "stakeWeight",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "athenaQuestions",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "questioner",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "descriptionHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "feeAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "targetOracleName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votesFor",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votesAgainst",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "result",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isVotingActive",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timeStamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isResolved",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "daoContract",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "disputeCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "disputeVotes",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "choice",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "stakeWeight",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "disputes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "jobID",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "disputedAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "hash",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "disputeRaiserAddress",
+						"type": "address"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votesFor",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "votesAgainst",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "result",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "isVotingActive",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timeStamp",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "fees",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "targetOracleName",
+						"type": "string"
+					},
+					{
+						"internalType": "bool",
+						"name": "isResolved",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_questionId",
+						"type": "uint256"
+					}
+				],
+				"name": "executeAthenaQuestionTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_disputeId",
+						"type": "uint256"
+					}
+				],
+				"name": "executeDisputeTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_applicationId",
+						"type": "uint256"
+					}
+				],
+				"name": "executeSkillVerificationTimeout",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_questionId",
+						"type": "uint256"
+					}
+				],
+				"name": "getAthenaQuestionVoteStatus",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "totalVotesFor",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalVotesAgainst",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalVotesCast",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isResolved",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "result",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "targetOracle",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_disputeId",
+						"type": "uint256"
+					}
+				],
+				"name": "getDisputeVoteStatus",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "totalVotesFor",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalVotesAgainst",
+						"type": "uint256"
+					},
+					{
+						"internalType": "uint256",
+						"name": "totalVotesCast",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "isResolved",
+						"type": "bool"
+					},
+					{
+						"internalType": "bool",
+						"name": "result",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "targetOracle",
+						"type": "string"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_oracleName",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_member",
+						"type": "address"
+					}
+				],
+				"name": "getMemberStake",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "hasVotedOnAthenaQuestion",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "hasVotedOnDispute",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "hasVotedOnSkillVerification",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "",
+						"type": "bool"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "memberStakes",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "minOracleMembers",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					}
+				],
+				"name": "oracles",
+				"outputs": [
+					{
+						"internalType": "string",
+						"name": "name",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "shortDescription",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "hashOfDetails",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "stakeAmount",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [],
+				"name": "questionCounter",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_jobId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_disputeHash",
+						"type": "string"
+					},
+					{
+						"internalType": "string",
+						"name": "_oracleName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_fee",
+						"type": "uint256"
+					}
+				],
+				"name": "raiseDispute",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_oracleName",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "_memberToRemove",
+						"type": "address"
+					}
+				],
+				"name": "removeMemberFromOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string[]",
+						"name": "_oracleNames",
+						"type": "string[]"
+					}
+				],
+				"name": "removeOracle",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"name": "skillApplications",
+				"outputs": [
+					{
+						"internalType": "address",
+						"name": "applicant",
+						"type": "address"
+					},
+					{
+						"internalType": "string",
+						"name": "applicationHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "feeAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "targetOracleName",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "deadline",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "",
+						"type": "string"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "skillVerificationDates",
+				"outputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "",
+						"type": "uint256"
+					},
+					{
+						"internalType": "address",
+						"name": "",
+						"type": "address"
+					}
+				],
+				"name": "skillVerificationVotes",
+				"outputs": [
+					{
+						"internalType": "bool",
+						"name": "choice",
+						"type": "bool"
+					},
+					{
+						"internalType": "uint256",
+						"name": "stakeWeight",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "reason",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "timestamp",
+						"type": "uint256"
+					}
+				],
+				"stateMutability": "view",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "string",
+						"name": "_applicationHash",
+						"type": "string"
+					},
+					{
+						"internalType": "uint256",
+						"name": "_feeAmount",
+						"type": "uint256"
+					},
+					{
+						"internalType": "string",
+						"name": "_targetOracleName",
+						"type": "string"
+					}
+				],
+				"name": "submitSkillVerification",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_newMinMembers",
+						"type": "uint256"
+					}
+				],
+				"name": "updateMinOracleMembers",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_questionId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_voteChoice",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "_reason",
+						"type": "string"
+					}
+				],
+				"name": "voteOnAthenaQuestion",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_disputeId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_voteChoice",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "_reason",
+						"type": "string"
+					}
+				],
+				"name": "voteOnDispute",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			},
+			{
+				"inputs": [
+					{
+						"internalType": "uint256",
+						"name": "_applicationId",
+						"type": "uint256"
+					},
+					{
+						"internalType": "bool",
+						"name": "_voteChoice",
+						"type": "bool"
+					},
+					{
+						"internalType": "string",
+						"name": "_reason",
+						"type": "string"
+					}
+				],
+				"name": "voteOnSkillVerification",
+				"outputs": [],
+				"stateMutability": "nonpayable",
+				"type": "function"
+			}
+		],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"native-athena.sol": "Athena"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": true,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"native-athena.sol": {
+			"keccak256": "0x6fe0fd71f8dc153bb392dfba03485dbe5681f986ddfbc77fbe601b369328bc77",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://99066e1e8837297976dd26c030fd1f26eff0fca00bcbc8cc36b143627d4fb7ba",
+				"dweb:/ipfs/QmdkeSxQRkUkyNLGoKe7grynEJv5zcPfhomp1BRhR1Rvrx"
+			]
+		}
+	},
+	"version": 1
+}
